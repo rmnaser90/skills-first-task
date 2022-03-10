@@ -1,18 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Home from './Components/Home';
+import ButtonP from './Components/ButtonP/ButtonP';
 
 function App() {
-  const fetch = ()=>'hello'
-
-  const title = fetch() as String
-
-  return (
-    <div className="App">
-      <Home/>
-    </div>
-  );
+    return (
+        <div className="App">
+            <ButtonP />
+        </div>
+    );
 }
 
 export default App;

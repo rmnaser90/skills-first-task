@@ -1,0 +1,22 @@
+.bkgnd_primary{
+    background-color: #81b29a;
+}
+
+.bkgnd_secondary{
+    background-color: #f2cc8f;
+}
+
+.bkgnd_default{
+    background-color: #f4f1de;
+}
+
+.text_primary{
+    color: #3d405b;
+}
+
+.text_secondary{
+    color: #81b29a;
+}
+.text_default{
+    color: #f4f1de;
+}
