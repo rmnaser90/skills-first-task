@@ -1,13 +1,13 @@
-import React from 'react';
-import './App.css';
-import ButtonP from './Components/ButtonP/ButtonP';
+import React from 'react'
+import './App.css'
+import ButtonP from './Components/ButtonP/ButtonP'
 
-function App() {
+const App: React.FC = function () {
     return (
         <div className="App">
-            <ButtonP />
+            <ButtonP  type='primary' height='50px' width="200px" onClick={() => 'hello'} />
         </div>
-    );
+    )
 }
 
-export default App;
+export default App
