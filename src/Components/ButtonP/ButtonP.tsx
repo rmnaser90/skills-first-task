@@ -1,30 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../../Theme/colors.css'
 import './ButtonP.css'
-import colors from '../../Theme/Colors'
+import styles from './ButtonPStyle'
 
 type Props = {
-    width?: (string | number) | undefined
-    height?: (string | number) | undefined
     onClick: () => void
-    type: 'primary' | 'secondary' | 'default'
 }
 
-const ButtonP: React.FC<Props> = ({ width, height, onClick, type }) => {
-    const divStyle = {
-        width: width ? width : '100%',
-        height: height ? height : '100%',
-        backgroundColor: colors[type],
-        color: colors.text[type],
-        display: 'grid',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: '6px',
-        cursor: 'pointer',
-    }
-
+const ButtonP: React.FC<Props> = ({  onClick }) => {
+    const [isHovered, seIsHovered] = useState<boolean>(false)
+    const {divStyle } = styles
+        divStyle.width = isHovered?'95%':'90%'
     return (
-        <div onClick={onClick} style={{ ...divStyle }}>
+        <div
+            onClick={onClick}
+            style={{ ...divStyle}}
+            onMouseEnter={() => seIsHovered(true)}
+            onMouseLeave={() => seIsHovered(false)}
+        >
             <h2 style={{ margin: '0px' }}>add new item</h2>
         </div>
     )
