@@ -1,4 +1,4 @@
-import styled, { StyledComponent, StyledProps } from 'styled-components'
+import styled from 'styled-components'
 import colors from '../../Theme/Colors'
 
 type Props = {
