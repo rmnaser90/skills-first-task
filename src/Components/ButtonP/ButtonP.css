@@ -1,8 +1,0 @@
-.ButtonPContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    border-radius: 6px;
-    cursor: pointer;
-}
