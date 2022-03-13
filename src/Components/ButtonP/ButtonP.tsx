@@ -3,10 +3,11 @@ import '../../Theme/colors.css'
 import styles from './ButtonPStyle'
 
 type Props = {
-    onClick: () => void
+    onClick?: () => void
+    children?: string
 }
 
-const ButtonP: React.FC<Props> = ({ onClick }) => {
+const ButtonP: React.FC<Props> = ({ onClick, children}) => {
     const [isHovered, seIsHovered] = useState<boolean>(false)
     const { divStyle } = styles
     divStyle.width = isHovered ? '95%' : '90%'
@@ -17,7 +18,7 @@ const ButtonP: React.FC<Props> = ({ onClick }) => {
             onMouseEnter={() => seIsHovered(true)}
             onMouseLeave={() => seIsHovered(false)}
         >
-            <h2 style={{ margin: '0px' }}>add new item</h2>
+          {children}
         </div>
     )
 }

@@ -1,3 +1,4 @@
+import React from 'react'
 import colors from '../../Theme/Colors'
 
 const styles = {
@@ -11,8 +12,12 @@ const styles = {
         alignItems: 'center',
         borderRadius: '6px',
         cursor: 'pointer',
-        transition:'0.3s'
-    }
+        transition:'0.3s',
+        fontFamily:'Roboto',
+        fontSize:'20px',
+        fontWeight:'400'
+        
+    } as React.CSSProperties
     
 }
 

@@ -1,12 +1,13 @@
 import React from 'react'
-
+import ParagraphStyle from './ParagraphStyle'
 interface Props{
     children:string
 }
 
 const Paragraph: React.FC<Props> = ({children}) => {
+    const {text}=ParagraphStyle
   return (
-    <div>{children}</div>
+    <div style={{...text}}>{children}</div>
   )
 }
 
