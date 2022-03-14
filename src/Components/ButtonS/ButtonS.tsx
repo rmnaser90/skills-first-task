@@ -1,8 +1,13 @@
 import React from 'react'
-import '../../Theme/colors.css'
+import ButtonStyled from './ButtonStyled'
 
-const ButtonS: React.FC = () => {
-    return <div>ButtonS</div>
+type Props = {
+    onClick?: () => void
+    children?: string
+    showIcon?: boolean | undefined
+}
+const ButtonS: React.FC<Props> = ({ children,showIcon }) => {
+    return <ButtonStyled showIcon={showIcon}>{showIcon?<div className='icon'/>:null}{children}</ButtonStyled>
 }
 
 export default ButtonS
