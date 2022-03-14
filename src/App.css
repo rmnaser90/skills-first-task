@@ -7,3 +7,6 @@ body{
 .app{
   width: 100vw;
 }
+::-webkit-scrollbar {
+  display: none;
+}
