@@ -9,8 +9,8 @@ const CardStyled = styled.div`
     margin-bottom: 16px;
     display: grid;
     grid-template-rows: 1.09fr 1fr;
-    padding-left: 6.4%;
-    padding-right: 6.4%;
+    margin-left: 6.4%;
+    margin-right: 6.4%;
     border-radius: 9px;
     box-shadow: 0px 6.74227px 12.3608px rgba(0, 0, 0, 0.09);
 
@@ -27,6 +27,17 @@ const CardStyled = styled.div`
         background-color: ${colors.secondary};
         border-bottom-left-radius: 9px;
         border-bottom-right-radius: 9px;
+        display: grid;
+        grid-template-rows: 1fr 2.5fr;
+        align-items: center;
+        justify-items: center;
+    }
+    & .titleContainer{
+        width: 90%;
+        align-self: flex-end;
+    }
+    & .descriptionContainer{
+        width: 90%;
     }
 
 
