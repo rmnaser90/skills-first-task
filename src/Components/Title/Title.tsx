@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import TitleStyle from './TitleStyle'
 interface Props {
-    children: string
+    children: string | undefined |ReactNode
 }
 
 const Title: React.FC<Props> = ({ children }) => {
