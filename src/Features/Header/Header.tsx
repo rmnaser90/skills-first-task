@@ -3,7 +3,7 @@ import HeaderStyle from './HeaderStyle'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
-export const Header: React.FC = () => {
+ const Header: React.FC = () => {
     const { headerContainer, menuIcon, logo } = HeaderStyle
     return (
         <div style={{ ...headerContainer }}>
@@ -14,3 +14,4 @@ export const Header: React.FC = () => {
         </div>
     )
 }
+export default Header

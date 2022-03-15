@@ -6,8 +6,13 @@ type Props = {
     children?: string
     showIcon?: boolean | undefined
 }
-const ButtonS: React.FC<Props> = ({ children,showIcon,onClick }) => {
-    return <ButtonStyled onClick={onClick} showIcon={showIcon}>{showIcon?<div className='icon'/>:null}{children}</ButtonStyled>
+const ButtonS: React.FC<Props> = ({ children, showIcon, onClick }) => {
+    return (
+        <ButtonStyled onClick={onClick} showIcon={showIcon}>
+            {showIcon ? <div className="icon" /> : null}
+            {children}
+        </ButtonStyled>
+    )
 }
 
 export default ButtonS

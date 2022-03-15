@@ -1,15 +1,12 @@
-body{
-  margin: 0px;
-  font-family:Roboto;
-  font-weight: 400;
-  width:'100vw'
+body {
+    margin: 0px;
+    font-family: Roboto;
+    font-weight: 400;
+    width: '100vw';
 }
-.app{
-  width: 100vw;
+.app {
+    width: 100vw;
 }
 ::-webkit-scrollbar {
-  display: none;
-}
-
-.hey {
+    display: none;
 }
