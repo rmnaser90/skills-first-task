@@ -1,4 +1,5 @@
 import React from 'react'
+import SubTitle from '../SubTitle/SubTitle'
 import Title from '../Title/Title'
 import CardStyled from './CardStyled'
 
@@ -8,16 +9,18 @@ type Props = {
         img?: string | undefined
         text?: string
     }
+    width?: string
+    height?: string
 }
 
-const Card: React.FC<Props> = ({ item }) => {
+const Card: React.FC<Props> = ({ item, width, height }) => {
     const { title, img, text } = item
     return (
-        <CardStyled>
+        <CardStyled width={width} height={height}>
             <div className="img">{img ? <img src={img} /> : null}</div>
             <div className="contentContainer">
                 <div className="titleContainer">
-                    <Title>{title}</Title>
+                    {width?<SubTitle>{title}</SubTitle>:<Title>{title}</Title>}
                 </div>
                 <div className="descriptionContainer">{text}</div>
             </div>

@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import SubTitleStyled from './SubTitleStyled'
 interface Props {
-    children: string
+    children: string | ReactNode
 }
 
 const SubTitle: React.FC<Props> = ({ children }) => {

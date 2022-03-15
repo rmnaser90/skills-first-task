@@ -6,38 +6,14 @@ import Title from '../../Components/Title/Title'
 import HeaderSection from '../../Features/HeaderSection/HeaderSection'
 import FunctionPageStyled from './FunctionPageStyled'
 
-const ITEMS = [
-    {
-        title: 'post1',
-        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ex itaque quasi voluptatibus molestias non eos, nulla reiciendis eligendi! Ab cupiditate rem commodi aspernatur pariatur expedita, harum quo doloribus porro.'
-    },
-    {
-        title: 'post1',
-        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ex itaque quasi voluptatibus molestias non eos, nulla reiciendis eligendi! Ab cupiditate rem commodi aspernatur pariatur expedita, harum quo doloribus porro.'
-    },
-    {
-        title: 'post1',
-        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ex itaque quasi voluptatibus molestias non eos, nulla reiciendis eligendi! Ab cupiditate rem commodi aspernatur pariatur expedita, harum quo doloribus porro.'
-    },
-    {
-        title: 'post1',
-        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ex itaque quasi voluptatibus molestias non eos, nulla reiciendis eligendi! Ab cupiditate rem commodi aspernatur pariatur expedita, harum quo doloribus porro.'
-    },
-    {
-        title: 'post1',
-        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ex itaque quasi voluptatibus molestias non eos, nulla reiciendis eligendi! Ab cupiditate rem commodi aspernatur pariatur expedita, harum quo doloribus porro.'
-    },
-    {
-        title: 'post1',
-        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ex itaque quasi voluptatibus molestias non eos, nulla reiciendis eligendi! Ab cupiditate rem commodi aspernatur pariatur expedita, harum quo doloribus porro.'
-    }
-]
-
 type Props = {
     viewportHeight: number
+    items: {
+        title: string
+        text: string
+    }[]
 }
-const FunctionPage: React.FC<Props> = ({ viewportHeight }) => {
-    const [items, setItems] = useState(ITEMS)
+const FunctionPage: React.FC<Props> = ({ viewportHeight, items }) => {
     const [selectedFilter, setSelectedFilter] = useState<string>('Filter')
 
     return (

@@ -7,6 +7,8 @@ import Homepage from './Pages/HomePage/Homepage'
 
 const App: React.FC = function () {
     const [viewportHeight, setViewportHeight] = useState(window.innerHeight)
+    const [items, setItems] = useState(ITEMS)
+  
     useEffect(() => {
         window.onresize = function () {
             if (window.innerHeight != viewportHeight) {
@@ -18,10 +20,38 @@ const App: React.FC = function () {
     return (
         <AppStyled viewportHeight={viewportHeight}>
             <Header />
-            {/* <FunctionPage viewportHeight={viewportHeight} /> */}
-            <Homepage viewportHeight={viewportHeight}/>
+            {/* <FunctionPage viewportHeight={viewportHeight} items={items}/> */}
+            <Homepage viewportHeight={viewportHeight} items={items}/>
         </AppStyled>
     )
 }
 
+const ITEMS = [
+    {
+        title: 'post1',
+        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ex itaque quasi voluptatibus molestias non eos, nulla reiciendis eligendi! Ab cupiditate rem commodi aspernatur pariatur expedita, harum quo doloribus porro.'
+    },
+    {
+        title: 'post1',
+        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ex itaque quasi voluptatibus molestias non eos, nulla reiciendis eligendi! Ab cupiditate rem commodi aspernatur pariatur expedita, harum quo doloribus porro.'
+    },
+    {
+        title: 'post1',
+        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ex itaque quasi voluptatibus molestias non eos, nulla reiciendis eligendi! Ab cupiditate rem commodi aspernatur pariatur expedita, harum quo doloribus porro.'
+    },
+    {
+        title: 'post1',
+        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ex itaque quasi voluptatibus molestias non eos, nulla reiciendis eligendi! Ab cupiditate rem commodi aspernatur pariatur expedita, harum quo doloribus porro.'
+    },
+    {
+        title: 'post1',
+        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ex itaque quasi voluptatibus molestias non eos, nulla reiciendis eligendi! Ab cupiditate rem commodi aspernatur pariatur expedita, harum quo doloribus porro.'
+    },
+    {
+        title: 'post1',
+        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ex itaque quasi voluptatibus molestias non eos, nulla reiciendis eligendi! Ab cupiditate rem commodi aspernatur pariatur expedita, harum quo doloribus porro.'
+    }
+]
+
 export default App
+
