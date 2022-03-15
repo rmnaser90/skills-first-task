@@ -3,6 +3,7 @@ import './App.css'
 import AppStyled from './AppStyled'
 import  Header  from './Features/Header/Header'
 import FunctionPage from './Pages/FunctionPage/FunctionPage'
+import Homepage from './Pages/HomePage/Homepage'
 
 const App: React.FC = function () {
     const [viewportHeight, setViewportHeight] = useState(window.innerHeight)
@@ -17,7 +18,8 @@ const App: React.FC = function () {
     return (
         <AppStyled viewportHeight={viewportHeight}>
             <Header />
-            <FunctionPage viewportHeight={viewportHeight} />
+            {/* <FunctionPage viewportHeight={viewportHeight} /> */}
+            <Homepage viewportHeight={viewportHeight}/>
         </AppStyled>
     )
 }
