@@ -4,6 +4,7 @@ import AppStyled from './AppStyled'
 import  Header  from './Features/Header/Header'
 import FunctionPage from './Pages/FunctionPage/FunctionPage'
 import Homepage from './Pages/HomePage/Homepage'
+import SignIn from './Pages/SignIn/SignIn'
 import SignUp from './Pages/SignUp/SignUp'
 
 const App: React.FC = function () {
@@ -23,7 +24,8 @@ const App: React.FC = function () {
             <Header />
             {/* <FunctionPage viewportHeight={viewportHeight} items={items}/> */}
             {/* <Homepage viewportHeight={viewportHeight} items={items}/> */}
-            <SignUp/>
+            {/* <SignUp/> */}
+            <SignIn/>
         </AppStyled>
     )
 }

@@ -6,14 +6,15 @@ import Input from '../../Components/Inputs/Input'
 import Paragraph from '../../Components/Paragraph/Paragraph'
 import Title from '../../Components/Title/Title'
 import SignUpHeader from '../../Features/SignUpHeader/SignUpHeader'
-import SignUpStyled from './SignUpStyled'
-const SignUp: React.FC = () => {
+import SignUpStyled from '../SignUp/SignUpStyled'
+
+const SignIn: React.FC = () => {
     return (
         <SignUpStyled>
             <SignUpHeader />
             <div className="signUpForm">
                 <div className="formHeader">
-                    <Title>Signup</Title>
+                    <Title>Login</Title>
                     <Paragraph>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium est veritatis, laboriosam
                         ut sapiente nemo adipisci. Ut dolor nulla quisquam corrupti. Similique omnis aspernatur,
@@ -22,10 +23,6 @@ const SignUp: React.FC = () => {
                 </div>
                 <div className="inputsContainer">
                     <div className="inputContainer">
-                        <InputLabel text="Full Name" />
-                        <Input placeholder="Full Name" />
-                    </div>
-                    <div className="inputContainer">
                         <InputLabel text="Email" />
                         <Input placeholder="Email Address" />
                     </div>
@@ -33,22 +30,13 @@ const SignUp: React.FC = () => {
                         <InputLabel text="Password" />
                         <Input placeholder="Password" type="password" />
                     </div>
-                    <div className="inputContainer">
-                        <InputLabel text="Confirm password" />
-                        <Input placeholder="Confirm password" type="password" />
-                    </div>
+                </div>
+                <div className="forgetPasswordText">
+                    <strong>Forgot password</strong>
                 </div>
                 <div className="actionsContainer">
-                    <div className="agreementContainer">
-                        <CheckboxStyled type={'checkbox'} />
-                        <InputLabel text="I Confirm that I have read the Terms and Conditions" />
-                    </div>
                     <div className="buttonContainer">
-
-                    <ButtonP>Create new Account</ButtonP>
-                    </div>
-                    <div className="loginText">
-                        I already have an account <strong>login</strong>
+                        <ButtonP>Sign in</ButtonP>
                     </div>
                 </div>
             </div>
@@ -56,4 +44,4 @@ const SignUp: React.FC = () => {
     )
 }
 
-export default SignUp
+export default SignIn

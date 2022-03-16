@@ -27,5 +27,30 @@ const SignUpStyled = styled.div`
         flex-direction: column;
         row-gap: 18px;
     }
+    & .actionsContainer {
+        width: 100%;
+        height: 258px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    & .agreementContainer {
+        display: flex;
+        flex-direction: row;
+        column-gap: 5px;
+    }
+    & .loginText{
+        text-align: center;
+    }
+    & .buttonContainer{
+        width: 222px;
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        align-self: center;
+    }
+    & .forgetPasswordText{
+        margin-top: 20px;
+    }
 `
 export default SignUpStyled
