@@ -11,12 +11,13 @@ type Props = {
     }
     width?: string
     height?: string
+    onClick?:()=>void
 }
 
-const Card: React.FC<Props> = ({ item, width, height }) => {
+const Card: React.FC<Props> = ({ item, width, height,onClick }) => {
     const { title, img, text } = item
     return (
-        <CardStyled width={width} height={height}>
+        <CardStyled width={width} height={height} onClick={onClick}>
             <div className="img">{img ? <img src={img} /> : null}</div>
             <div className="contentContainer">
                 <div className="titleContainer">

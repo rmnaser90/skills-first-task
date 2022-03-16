@@ -7,7 +7,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
     const { headerContainer, menuIcon, logo } = HeaderStyle
     return (
         <div style={{ ...headerContainer }}>
-            <div style={{ ...logo }}>Teams</div>
+            <div style={{ ...logo }} >Teams</div>
             <div style={{ ...menuIcon }}>
                 <FontAwesomeIcon icon={faBars} />
             </div>

@@ -42,6 +42,9 @@ const SignUpStyled = styled.div`
     & .loginText{
         text-align: center;
     }
+    & .loginText strong{
+        cursor: pointer;
+    }
     & .buttonContainer{
         width: 222px;
         display: grid;

@@ -9,6 +9,7 @@ import LeftArrowButton from '../../Components/LeftArrowButton/LeftArrowButton'
 import RightArrowButton from '../../Components/RightArrowButton/RightArrowButton'
 import FeatureCard from '../../Components/FeatureCard/FeatureCard'
 import Paragraph from '../../Components/Paragraph/Paragraph'
+import { useNavigate } from "react-router-dom";
 
 type Props = {
     viewportHeight: number
@@ -18,6 +19,7 @@ type Props = {
     }[]
 }
 const Homepage: React.FC<Props> = ({ viewportHeight, items }) => {
+    const navigate = useNavigate()
     return (
         <HomePageStyled viewportHeight={viewportHeight}>
             <TopNab />
@@ -26,7 +28,7 @@ const Homepage: React.FC<Props> = ({ viewportHeight, items }) => {
                     <Title fontSize="50px">Headline Text</Title>
                     <Title fontSize="50px">Headline Text 2 lines</Title>
                     <div className="actionContainer">
-                        <ButtonP>Get started</ButtonP>
+                        <ButtonP onClick={()=>navigate('signup')}>Get started</ButtonP>
                     </div>
                     <div className="imgContainer">
                         <CircleFrame />
@@ -36,7 +38,7 @@ const Homepage: React.FC<Props> = ({ viewportHeight, items }) => {
                     <Title>This week inspiration</Title>
                     <div className="itemsContainer">
                         {items.map((item, i) => (
-                            <Card item={item} key={i} width="197px" height='100%' />
+                            <Card item={item} key={i} width="197px" height='100%' onClick={()=>navigate('function')}  />
                         ))}
                     </div>
                     <div className="navbtns">

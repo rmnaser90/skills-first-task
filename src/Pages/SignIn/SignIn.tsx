@@ -7,8 +7,10 @@ import Paragraph from '../../Components/Paragraph/Paragraph'
 import Title from '../../Components/Title/Title'
 import SignUpHeader from '../../Features/SignUpHeader/SignUpHeader'
 import SignUpStyled from '../SignUp/SignUpStyled'
+import {useNavigate} from 'react-router-dom'
 
 const SignIn: React.FC = () => {
+    const navigate = useNavigate()
     return (
         <SignUpStyled>
             <SignUpHeader />
@@ -37,6 +39,9 @@ const SignIn: React.FC = () => {
                 <div className="actionsContainer">
                     <div className="buttonContainer">
                         <ButtonP>Sign in</ButtonP>
+                    </div>
+                <div className="loginText">
+                        I don&apos;t have an account <strong onClick={()=>navigate('../signup')}>Sign Up</strong>
                     </div>
                 </div>
             </div>

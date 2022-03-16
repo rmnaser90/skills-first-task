@@ -7,7 +7,10 @@ import Paragraph from '../../Components/Paragraph/Paragraph'
 import Title from '../../Components/Title/Title'
 import SignUpHeader from '../../Features/SignUpHeader/SignUpHeader'
 import SignUpStyled from './SignUpStyled'
+import { useNavigate } from "react-router-dom";
+
 const SignUp: React.FC = () => {
+    const navigate = useNavigate()
     return (
         <SignUpStyled>
             <SignUpHeader />
@@ -48,7 +51,7 @@ const SignUp: React.FC = () => {
                     <ButtonP>Create new Account</ButtonP>
                     </div>
                     <div className="loginText">
-                        I already have an account <strong>login</strong>
+                        I already have an account <strong onClick={()=>navigate('../signin')}>login</strong>
                     </div>
                 </div>
             </div>
