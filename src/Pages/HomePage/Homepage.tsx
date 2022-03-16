@@ -7,6 +7,8 @@ import HomePageStyled from './HomePageStyled'
 import Card from '../../Components/Card/Card'
 import LeftArrowButton from '../../Components/LeftArrowButton/LeftArrowButton'
 import RightArrowButton from '../../Components/RightArrowButton/RightArrowButton'
+import FeatureCard from '../../Components/FeatureCard/FeatureCard'
+import Paragraph from '../../Components/Paragraph/Paragraph'
 
 type Props = {
     viewportHeight: number
@@ -42,6 +44,16 @@ const Homepage: React.FC<Props> = ({ viewportHeight, items }) => {
                             <RightArrowButton/>
                     </div>
                 </div>
+                <div className="featuresContainer">
+                    <div className="featuresHeader">
+                        <Title>Our features</Title>
+                        <Paragraph>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo temporibus eligendi corporis possimus eveniet obcaecati labore commodi beatae earum illo, impedit praesentium corrupti dolor blanditiis dicta iste rerum aliquid minima?</Paragraph>
+                    </div>
+                    <FeatureCard>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, dolor molestiae? Quos pariatur dicta recusandae facere quod, aspernatur doloribus iusto. Repellendus laborum sapiente deleniti adipisci eius sed ut dolorum omnis.</FeatureCard>
+                    <FeatureCard>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, dolor molestiae? Quos pariatur dicta recusandae facere quod, aspernatur doloribus iusto. Repellendus laborum sapiente deleniti adipisci eius sed ut dolorum omnis.</FeatureCard>
+                    <FeatureCard>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, dolor molestiae? Quos pariatur dicta recusandae facere quod, aspernatur doloribus iusto. Repellendus laborum sapiente deleniti adipisci eius sed ut dolorum omnis.</FeatureCard>
+                </div>
+
             </div>
         </HomePageStyled>
     )

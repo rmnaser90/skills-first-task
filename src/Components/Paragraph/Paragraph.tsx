@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import ParagraphStyle from './ParagraphStyle'
 interface Props {
-    children: string
+    children: string | ReactNode
 }
 
 const Paragraph: React.FC<Props> = ({ children }) => {

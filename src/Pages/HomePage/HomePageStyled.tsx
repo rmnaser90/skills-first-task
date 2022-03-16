@@ -53,6 +53,21 @@ const HomePageStyled = styled.div<Props>`
         justify-content: flex-end;
         column-gap: 10px;
     }
+    & .featuresContainer {
+        width: 87.2%;
+        margin-left: 6.4%;
+        display: flex;
+        flex-direction: column;
+        row-gap: 22px;
+    }
+    & .featuresHeader {
+        display: grid;
+        align-items: center;
+        margin-top: 40px;
+        margin-bottom: 32px;
+        height: 174px;
+        line-height: 24px;
+    }
 `
 
 export default HomePageStyled
