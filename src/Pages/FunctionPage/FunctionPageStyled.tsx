@@ -19,6 +19,11 @@ const HomePageStyled = styled.div<Props>`
         column-gap: 10px;
         overflow-x: scroll;
     }
+    & .cardsContainer{
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+    }
 `
 
 export default HomePageStyled

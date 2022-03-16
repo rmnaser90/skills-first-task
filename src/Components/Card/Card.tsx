@@ -23,7 +23,7 @@ const Card: React.FC<Props> = ({ item, width, height,onClick }) => {
                 <div className="titleContainer">
                     {width?<SubTitle>{title}</SubTitle>:<Title>{title}</Title>}
                 </div>
-                <div className="descriptionContainer">{text}</div>
+                <div className="descriptionContainer">{text}asfgasdfadsfasdasdfasdfasdfasdfasdfadfsadfasfasfgasfasdfasdfasdfsdf</div>
             </div>
         </CardStyled>
     )

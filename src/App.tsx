@@ -27,7 +27,7 @@ const App: React.FC = function () {
                     <Route path="signin" element={<SignIn />} />
                     <Route path="signup" element={<SignUp />} />
                     <Route
-                        path="function/:itemId?"
+                        path="function/"
                         element={<FunctionPage viewportHeight={viewportHeight} items={items} />}
                     />
                 </Routes>

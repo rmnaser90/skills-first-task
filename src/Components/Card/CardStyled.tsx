@@ -40,7 +40,9 @@ const CardStyled = styled.div<Props>`
     }
     & .descriptionContainer {
         width: 90%;
+        height: 75%;
         font-size: ${({width})=>width?'11px':'18px'};
+        overflow-y: hidden;
     }
 `
 export default CardStyled
