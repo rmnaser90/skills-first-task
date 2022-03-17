@@ -35,6 +35,7 @@ const HomePageStyled = styled.div<Props>`
         display: grid;
         grid-template-rows: 2fr 4fr 1fr;
         align-items: center;
+        overflow-y: hidden;
     }
     & .itemsContainer {
         height: 256px;
@@ -42,6 +43,7 @@ const HomePageStyled = styled.div<Props>`
         display: flexbox;
         flex-direction: row;
         overflow-x: scroll;
+        overflow-y: hidden;
     }
     & .navbtns {
         width: 93.6%;
@@ -62,6 +64,7 @@ const HomePageStyled = styled.div<Props>`
     }
     & .featuresHeader {
         display: grid;
+        grid-template-rows: 1fr 2fr;
         align-items: center;
         margin-top: 40px;
         margin-bottom: 32px;

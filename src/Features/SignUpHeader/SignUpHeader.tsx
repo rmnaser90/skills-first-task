@@ -6,6 +6,8 @@ const SignUpHeader:React.FC = () => {
     <SignUpHeaderStyled>
         
         <CircleFrame/>
+        <div className="circle"/>
+        <div className="hollowCircle"/>
         
     </SignUpHeaderStyled>
   )

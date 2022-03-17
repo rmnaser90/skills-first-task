@@ -22,6 +22,12 @@ const CardStyled = styled.div<Props>`
         background-color: ${colors.default};
         border-top-left-radius: 9px;
         border-top-right-radius: 9px;
+        display: grid;
+        align-items: center;
+        justify-items: center;
+    }
+    & img{
+        height: ${({width})=>width?'110px':'190px'};
     }
     & .contentContainer {
         width: 100%;
@@ -33,16 +39,22 @@ const CardStyled = styled.div<Props>`
         grid-template-rows: 1fr 2.5fr;
         align-items: center;
         justify-items: center;
+        overflow: hidden;
     }
     & .titleContainer {
         width: 90%;
         align-self: flex-end;
+        display: grid;
+        align-items: center;
+        overflow: hidden;
+        height: 40px;
+
     }
     & .descriptionContainer {
         width: 90%;
         height: 75%;
         font-size: ${({width})=>width?'11px':'18px'};
-        overflow-y: hidden;
+        overflow-y: scroll;
     }
 `
 export default CardStyled

@@ -7,7 +7,7 @@ import ButtonP from '../../Components/ButtonP/ButtonP'
 const HeaderSection: React.FC = () => {
     return (
         <HeaderStyled>
-            <Title>BasketBall</Title>
+            <Title>Netboox</Title>
             <div className='paraContainer'>
                 <Paragraph>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, id possimus adipisci impedit expedita

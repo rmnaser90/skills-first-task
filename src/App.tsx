@@ -7,15 +7,22 @@ import FunctionPage from './Pages/FunctionPage/FunctionPage'
 import Homepage from './Pages/HomePage/Homepage'
 import SignIn from './Pages/SignIn/SignIn'
 import SignUp from './Pages/SignUp/SignUp'
+import APIManager from './APIs/APIManager'
 
+const apiManager = new APIManager()
 const App: React.FC = function () {
     const [viewportHeight, setViewportHeight] = useState(window.innerHeight)
-    const [items, setItems] = useState(ITEMS)
+    const [items, setItems] = useState([])
 
+    const getBooks = async function () {
+        const books = await apiManager.getBooks()
+        console.log(books)
+        setItems(books)
+    }
     useEffect(() => {
+        getBooks()
         window.onresize = function () {
             setViewportHeight(window.innerHeight)
-            console.log('changed')
         }
     }, [])
     return (
@@ -26,41 +33,12 @@ const App: React.FC = function () {
                     <Route index element={<Homepage viewportHeight={viewportHeight} items={items} />} />
                     <Route path="signin" element={<SignIn />} />
                     <Route path="signup" element={<SignUp />} />
-                    <Route
-                        path="function/"
-                        element={<FunctionPage viewportHeight={viewportHeight} items={items} />}
-                    />
+                    <Route path="function/" element={<FunctionPage viewportHeight={viewportHeight} items={items} />} />
                 </Routes>
             </BrowserRouter>
         </AppStyled>
     )
 }
 
-const ITEMS = [
-    {
-        title: 'post1',
-        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ex itaque quasi voluptatibus molestias non eos, nulla reiciendis eligendi! Ab cupiditate rem commodi aspernatur pariatur expedita, harum quo doloribus porro.'
-    },
-    {
-        title: 'post1',
-        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ex itaque quasi voluptatibus molestias non eos, nulla reiciendis eligendi! Ab cupiditate rem commodi aspernatur pariatur expedita, harum quo doloribus porro.'
-    },
-    {
-        title: 'post1',
-        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ex itaque quasi voluptatibus molestias non eos, nulla reiciendis eligendi! Ab cupiditate rem commodi aspernatur pariatur expedita, harum quo doloribus porro.'
-    },
-    {
-        title: 'post1',
-        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ex itaque quasi voluptatibus molestias non eos, nulla reiciendis eligendi! Ab cupiditate rem commodi aspernatur pariatur expedita, harum quo doloribus porro.'
-    },
-    {
-        title: 'post1',
-        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ex itaque quasi voluptatibus molestias non eos, nulla reiciendis eligendi! Ab cupiditate rem commodi aspernatur pariatur expedita, harum quo doloribus porro.'
-    },
-    {
-        title: 'post1',
-        text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea ex itaque quasi voluptatibus molestias non eos, nulla reiciendis eligendi! Ab cupiditate rem commodi aspernatur pariatur expedita, harum quo doloribus porro.'
-    }
-]
 
 export default App
