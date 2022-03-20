@@ -2,13 +2,9 @@ import React from 'react'
 import SubTitle from '../SubTitle/SubTitle'
 import Title from '../Title/Title'
 import CardStyled from './CardStyled'
-
+import {Book} from '../../../Types/Types'
 type Props = {
-    item: {
-        title?: string | undefined
-        img?: string | undefined
-        text?: string
-    }
+    item: Book
     width?: string
     height?: string
     onClick?:()=>void
