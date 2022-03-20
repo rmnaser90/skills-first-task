@@ -6,11 +6,11 @@ const InputStyled = styled.div`
     height: 45px;
     & input {
         width: 100%;
-        height:91%;
+        height:45px;
         padding-left:16px;
         padding-right: 16px;
-        padding-top: 4.5%;
-        padding-bottom: 4.5%;
+        padding-top: 10px;
+        padding-bottom: 10px;
         border: 1px solid #d6d6d6;
         font-size: 16px;
         box-sizing: border-box;

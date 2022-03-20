@@ -27,6 +27,12 @@ const SignUpStyled = styled.div`
         flex-direction: column;
         row-gap: 18px;
     }
+    & .inputContainer{
+        height: 91px;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        align-items: center;
+    }
     & .actionsContainer {
         width: 100%;
         height: 258px;
