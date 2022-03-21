@@ -11,6 +11,15 @@ export type State = {
     }
     isLoogedIn?: boolean
     books?: Book[]
+    forms?: {
+        login: {
+            username: string
+            password: string
+        }
+        signUp: {
+            username: string
+        }
+    }
 }
 
 export type Action = {
@@ -22,8 +31,8 @@ export type ApiBook = {
     volumeInfo: {
         title: string
         description: string
-        imageLinks:{
-            thumbnail:string
+        imageLinks: {
+            thumbnail: string
         }
     }
 }
