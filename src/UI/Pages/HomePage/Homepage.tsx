@@ -10,17 +10,15 @@ import RightArrowButton from '../../Components/RightArrowButton/RightArrowButton
 import FeatureCard from '../../Components/FeatureCard/FeatureCard'
 import Paragraph from '../../Components/Paragraph/Paragraph'
 import { useNavigate } from 'react-router-dom'
-
+import { Book, State } from '../../../Types/Types'
+import { useSelector } from 'react-redux'
 type Props = {
     viewportHeight: number
-    items: {
-        title: string
-        text: string
-    }[]
 }
 
-const Homepage: React.FC<Props> = ({ viewportHeight, items }) => {
+const Homepage: React.FC<Props> = ({ viewportHeight }) => {
     const navigate = useNavigate()
+    const items = useSelector((state: State) => state.books)
     return (
         <HomePageStyled viewportHeight={viewportHeight}>
             <TopNab />
@@ -38,15 +36,16 @@ const Homepage: React.FC<Props> = ({ viewportHeight, items }) => {
                 <div className="inspirationContainer">
                     <Title>This week inspiration</Title>
                     <div className="itemsContainer">
-                        {items.map((item, i) => (
-                            <Card
-                                item={item}
-                                key={i}
-                                width="197px"
-                                height="100%"
-                                onClick={() => navigate('function')}
-                            />
-                        ))}
+                        {items &&
+                            items.map((item, i) => (
+                                <Card
+                                    item={item}
+                                    key={i}
+                                    width="197px"
+                                    height="100%"
+                                    onClick={() => navigate('function')}
+                                />
+                            ))}
                     </div>
                     <div className="navbtns">
                         <LeftArrowButton />
