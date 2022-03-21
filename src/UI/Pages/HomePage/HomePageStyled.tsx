@@ -71,6 +71,55 @@ const HomePageStyled = styled.div<Props>`
         height: 174px;
         line-height: 24px;
     }
+
+    @media only screen and (min-width: 768px) {
+        & .mainContainer {
+            height: ${({ viewportHeight }) => viewportHeight - 72 + 'px'};
+        }
+        & .topNav {
+            display: none;
+        }
+        & .headlineContainer {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+        }
+        & .leftSection {
+            display: grid;
+            grid-template-columns: 1fr;
+            align-items: center;
+            justify-items: flex-start;
+        }
+        & .title {
+            align-self: flex-end;
+            font-size: 80px !important;
+        }
+        & .subtitle {
+            align-self: flex-start;
+            margin-top: 20px;
+            font-size: 60px !important;
+        }
+        & .actionContainer {
+            align-self: flex-start;
+        }
+        & .imgContainer {
+            display: grid;
+            align-items: center;
+            justify-items: center;
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+        & .featuresHeader{
+            width: 50%;
+        }
+        & .featuresContainer{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            justify-items: center;
+            column-gap: 20px;
+        }
+    }
 `
 
 export default HomePageStyled

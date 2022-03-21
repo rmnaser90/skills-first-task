@@ -6,7 +6,7 @@ const HeaderStyle = {
         height: '72px',
         width: '86.4vw',
         display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
+        gridTemplateColumns: '1fr1fr 1fr',
         alignItems: 'center',
         paddingRight: '7.2vw',
         paddingLeft: '6.4vw',

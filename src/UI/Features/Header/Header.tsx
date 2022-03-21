@@ -1,17 +1,16 @@
 import React from 'react'
-import HeaderStyle from './HeaderStyle'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
-
- const Header: React.FC = () => {
-    const { headerContainer, menuIcon, logo } = HeaderStyle
+import HeaderStyled from './HeaderStyled'
+const Header: React.FC = () => {
+    // const { headerContainer, menuIcon, logo } = HeaderStyle
     return (
-        <div style={{ ...headerContainer }}>
-            <div style={{ ...logo }} >Netboox</div>
-            <div style={{ ...menuIcon }}>
+        <HeaderStyled>
+            <div className='logo'>Netboox</div>
+            <div className='menuIcon'>
                 <FontAwesomeIcon icon={faBars} />
             </div>
-        </div>
+        </HeaderStyled>
     )
 }
 export default Header

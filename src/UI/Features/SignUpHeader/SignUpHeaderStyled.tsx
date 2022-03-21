@@ -27,6 +27,13 @@ const SignUpHeaderStyled = styled.div`
         top: 235px;
         background: ${colors.primary};
     }
+    @media only screen and (min-width: 768px) {
+        position: relative;
+        height: 100vh;
+        width: 46vw;
+        padding: 0px;
+        margin: 0px;
+    }
 `
 
 export default SignUpHeaderStyled

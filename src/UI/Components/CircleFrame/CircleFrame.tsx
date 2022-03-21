@@ -1,8 +1,10 @@
 import React from 'react'
 import CircleFrameStyled from './CircleFrameStyled'
-
-const CircleFrame: React.FC = () => {
-    return <CircleFrameStyled>CircleFrame</CircleFrameStyled>
+type Props = {
+    radius?: number
+}
+const CircleFrame: React.FC<Props> = ({radius}) => {
+    return <CircleFrameStyled radius={radius}></CircleFrameStyled>
 }
 
 export default CircleFrame

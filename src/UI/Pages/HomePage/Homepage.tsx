@@ -24,13 +24,17 @@ const Homepage: React.FC<Props> = ({ viewportHeight }) => {
             <TopNab />
             <div className="mainContainer">
                 <div className="headlineContainer">
-                    <Title fontSize="50px">Netboox</Title>
-                    <Title>All your books in one place</Title>
-                    <div className="actionContainer">
-                        <ButtonP onClick={() => navigate('signup')}>Get started</ButtonP>
+                    <div className="leftSection">
+                        <Title fontSize="50px" className="title">
+                            Netboox
+                        </Title>
+                        <Title className="subtitle">All your books in one place</Title>
+                        <div className="actionContainer">
+                            <ButtonP onClick={() => navigate('signup')}>Get started</ButtonP>
+                        </div>
                     </div>
                     <div className="imgContainer">
-                        <CircleFrame />
+                        <CircleFrame radius={window.innerWidth > 768 ? 474 : 256} />
                     </div>
                 </div>
                 <div className="inspirationContainer">
@@ -61,6 +65,7 @@ const Homepage: React.FC<Props> = ({ viewportHeight }) => {
                             dolor blanditiis dicta iste rerum aliquid minima?
                         </Paragraph>
                     </div>
+                    <div/>
                     <FeatureCard>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, dolor molestiae? Quos
                         pariatur dicta recusandae facere quod, aspernatur doloribus iusto. Repellendus laborum sapiente

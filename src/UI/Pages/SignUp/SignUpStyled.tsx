@@ -27,7 +27,7 @@ const SignUpStyled = styled.div`
         flex-direction: column;
         row-gap: 18px;
     }
-    & .inputContainer{
+    & .inputContainer {
         height: 91px;
         display: grid;
         grid-template-rows: 1fr 1fr;
@@ -45,21 +45,40 @@ const SignUpStyled = styled.div`
         flex-direction: row;
         column-gap: 5px;
     }
-    & .loginText{
+    & .loginText {
         text-align: center;
     }
-    & .loginText strong{
+    & .loginText strong {
         cursor: pointer;
     }
-    & .buttonContainer{
+    & .buttonContainer {
         width: 222px;
         display: grid;
         align-items: center;
         justify-items: center;
         align-self: center;
     }
-    & .forgetPasswordText{
+    & .forgetPasswordText {
         margin-top: 20px;
+    }
+
+    @media only screen and (min-width: 768px) {
+        display: flex;
+        flex-direction: row-reverse;
+        & .signUpForm {
+            width: 54vw;
+            height: 90vh;
+            top: 0px;
+            border-radius: 0px;
+            display: grid;
+            padding-top: 10vh;
+        }
+        & .actionsContainer {
+            align-items: flex-start;
+        }
+        & .buttonContainer{
+            align-self: flex-start;
+        }
     }
 `
 export default SignUpStyled

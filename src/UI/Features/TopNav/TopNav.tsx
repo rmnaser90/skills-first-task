@@ -1,8 +1,8 @@
 import React from 'react'
 import TopNavStyled from './TopNavStyled'
-const TopNab: React.FC = () => {
+const TopNav: React.FC = () => {
     return (
-        <TopNavStyled className='topNav'>
+        <TopNavStyled>
             <div>Section1</div>
             <div className="dot"/>
             <div>Section2</div>
@@ -12,4 +12,4 @@ const TopNab: React.FC = () => {
     )
 }
 
-export default TopNab
+export default TopNav
