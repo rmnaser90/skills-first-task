@@ -65,7 +65,7 @@ const Homepage: React.FC<Props> = ({ viewportHeight }) => {
                             dolor blanditiis dicta iste rerum aliquid minima?
                         </Paragraph>
                     </div>
-                    <div />
+                    <div/>
                     <FeatureCard>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, dolor molestiae? Quos
                         pariatur dicta recusandae facere quod, aspernatur doloribus iusto. Repellendus laborum sapiente

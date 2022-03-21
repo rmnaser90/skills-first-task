@@ -21,12 +21,10 @@ export type State = {
         }
     }
 }
-
 export type Action = {
     type: 'login' | 'logout' | 'getbooks'
     payload: State
 }
-
 export type ApiBook = {
     volumeInfo: {
         title: string
