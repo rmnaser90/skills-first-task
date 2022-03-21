@@ -12,10 +12,12 @@ export type State = {
     isLoogedIn?: boolean
     books?: Book[]
 }
+
 export type Action = {
     type: 'login' | 'logout' | 'getbooks'
     payload: State
 }
+
 export type ApiBook = {
     volumeInfo: {
         title: string
