@@ -22,3 +22,5 @@ export const reducer = function (state: State = {}, action: Action) {
             return state
     }
 }
+//redux thunk
+//zustand
