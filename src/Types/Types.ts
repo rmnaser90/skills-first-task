@@ -4,26 +4,48 @@ export type Book = {
     img?: string
 }
 
-export type State = {
+export interface State {
+    user: {
+        fullName?: string
+        email?: string
+        books?: Book[]
+    }
+    isLoogedIn: boolean
+    books: Book[]
+    forms: {
+        login: {
+            email?: string
+            password?: string
+            fullName?: string
+            confirmPassword?: string
+
+        }
+        signUp: {
+            fullName?: string
+            email?: string
+            password?: string
+            confirmPassword?: string
+        }
+    }
+}
+
+export interface Payload{
     user?: {
-        username: string
+        fullName?: string
+        email?: string
         books?: Book[]
     }
     isLoogedIn?: boolean
     books?: Book[]
-    forms?: {
-        login: {
-            username: string
-            password: string
-        }
-        signUp: {
-            username: string
-        }
+    inputHandler?: {
+        form: 'login' | 'signUp'
+        property: 'email' | 'password' | 'fullName' | 'confirmPassword'
+        value: string
     }
 }
 export type Action = {
-    type: 'login' | 'logout' | 'getbooks'
-    payload: State
+    type: 'login' | 'logout' | 'getbooks' | 'inputHandler'
+    payload: Payload
 }
 export type ApiBook = {
     volumeInfo: {
