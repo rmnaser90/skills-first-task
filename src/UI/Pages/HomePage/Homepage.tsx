@@ -12,6 +12,7 @@ import Paragraph from '../../Components/Paragraph/Paragraph'
 import { useNavigate } from 'react-router-dom'
 import { Book, State } from '../../../Types/Types'
 import { useSelector } from 'react-redux'
+import Carousel from '../../Components/Carousel/Carousel'
 type Props = {
     viewportHeight: number
 }
@@ -39,7 +40,7 @@ const Homepage: React.FC<Props> = ({ viewportHeight }) => {
                 </div>
                 <div className="inspirationContainer">
                     <Title>This week inspiration</Title>
-                    <div className="itemsContainer">
+                    <Carousel >
                         {items &&
                             items.map((item, i) => (
                                 <Card
@@ -50,11 +51,7 @@ const Homepage: React.FC<Props> = ({ viewportHeight }) => {
                                     onClick={() => navigate('function')}
                                 />
                             ))}
-                    </div>
-                    <div className="navbtns">
-                        <LeftArrowButton />
-                        <RightArrowButton />
-                    </div>
+                    </Carousel>
                 </div>
                 <div className="featuresContainer">
                     <div className="featuresHeader">

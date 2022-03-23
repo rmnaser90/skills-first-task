@@ -33,18 +33,11 @@ const HomePageStyled = styled.div<Props>`
         padding-left: 6.4%;
         height: 451px;
         display: grid;
-        grid-template-rows: 2fr 4fr 1fr;
+        grid-template-rows: 1fr 4fr ;
         align-items: center;
         overflow-y: hidden;
     }
-    & .itemsContainer {
-        height: 256px;
-        width: 100%;
-        display: flexbox;
-        flex-direction: row;
-        overflow-x: scroll;
-        overflow-y: hidden;
-    }
+
     & .navbtns {
         width: 93.6%;
         padding-right: 6.4%;

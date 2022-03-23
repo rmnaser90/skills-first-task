@@ -3,9 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import LeftArrowStyled from '../LeftArrowButton/LeftArrowStyled'
 
-const RightArrowButton = () => {
+type Props = {
+    onClick?: () => void
+    disabled?: boolean
+}
+const RightArrowButton: React.FC<Props> = ({ onClick, disabled }) => {
     return (
-        <LeftArrowStyled>
+        <LeftArrowStyled disabled={disabled} onClick={disabled ? () => console.log('disabled') : onClick}>
             <FontAwesomeIcon icon={faAngleRight} />
         </LeftArrowStyled>
     )
