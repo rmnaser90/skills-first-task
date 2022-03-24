@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import ButtonP from '../../Components/ButtonP/ButtonP'
 import CheckboxStyled from '../../Components/Checkbox/CheckboxStyled'
 import InputLabel from '../../Components/InpuLabel/InputLabel'
@@ -7,10 +9,24 @@ import Paragraph from '../../Components/Paragraph/Paragraph'
 import Title from '../../Components/Title/Title'
 import SignUpHeader from '../../Features/SignUpHeader/SignUpHeader'
 import SignUpStyled from './SignUpStyled'
-import { useNavigate } from "react-router-dom";
+
+import { State } from '../../../Types/Types'
+import { useDispatch, useSelector } from 'react-redux'
+import Dispatcher from '../../../StoreManager/dispatcher'
 
 const SignUp: React.FC = () => {
     const navigate = useNavigate()
+    const { isLoogedIn, forms } = useSelector((state: State) => state)
+    const { signUp } = forms
+    const { fullName, email, password, confirmPassword } = signUp
+    const { signUpInputHandler } = Dispatcher(useDispatch())
+
+    useEffect(() => {
+        if (isLoogedIn) {
+            navigate('/')
+        }
+    }, [])
+
     return (
         <SignUpStyled>
             <SignUpHeader />
@@ -26,19 +42,37 @@ const SignUp: React.FC = () => {
                 <div className="inputsContainer">
                     <div className="inputContainer">
                         <InputLabel text="Full Name" />
-                        <Input placeholder="Full Name" />
+                        <Input
+                            value={fullName}
+                            placeholder="Full Name"
+                            onChange={({ target }) => signUpInputHandler('fullName', target.value)}
+                        />
                     </div>
                     <div className="inputContainer">
                         <InputLabel text="Email" />
-                        <Input placeholder="Email Address" />
+                        <Input
+                            value={email}
+                            placeholder="Email Address"
+                            onChange={({ target }) => signUpInputHandler('email', target.value)}
+                        />
                     </div>
                     <div className="inputContainer">
                         <InputLabel text="Password" />
-                        <Input placeholder="Password" type="password" />
+                        <Input
+                            value={password}
+                            placeholder="Password"
+                            type="password"
+                            onChange={({ target }) => signUpInputHandler('password', target.value)}
+                        />
                     </div>
                     <div className="inputContainer">
                         <InputLabel text="Confirm password" />
-                        <Input placeholder="Confirm password" type="password" />
+                        <Input
+                            value={confirmPassword}
+                            placeholder="Confirm password"
+                            type="password"
+                            onChange={({ target }) => signUpInputHandler('confirmPassword', target.value)}
+                        />
                     </div>
                 </div>
                 <div className="actionsContainer">
@@ -47,11 +81,10 @@ const SignUp: React.FC = () => {
                         <InputLabel text="I Confirm that I have read the Terms and Conditions" />
                     </div>
                     <div className="buttonContainer">
-
-                    <ButtonP>Create new Account</ButtonP>
+                        <ButtonP>Create new Account</ButtonP>
                     </div>
                     <div className="loginText">
-                        I already have an account <strong onClick={()=>navigate('../signin')}>login</strong>
+                        I already have an account <strong onClick={() => navigate('../signin')}>login</strong>
                     </div>
                 </div>
             </div>

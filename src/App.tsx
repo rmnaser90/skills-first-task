@@ -10,22 +10,16 @@ import FunctionPage from './UI/Pages/FunctionPage/FunctionPage'
 import Homepage from './UI/Pages/HomePage/Homepage'
 import SignIn from './UI/Pages/SignIn/SignIn'
 import SignUp from './UI/Pages/SignUp/SignUp'
-import APIManager from './APIs/APIManager'
-
-const apiManager = new APIManager()
+import Dispatcher from './StoreManager/dispatcher'
 
 const App: React.FC = function () {
     const [viewportHeight, setViewportHeight] = useState(window.innerHeight)
-    const dispatch = useDispatch()
+    const {getBooks, autoLogin} = Dispatcher(useDispatch())
 
-    const getBooks = async function () {
-        const books: Book[] = await apiManager.getBooks()
-        const dispatcher: Action = { type: 'getbooks', payload: { books } }
-        dispatch(dispatcher)
-    }
 
     useEffect(() => {
         getBooks()
+        autoLogin()
         window.onresize = function () {
             setViewportHeight(window.innerHeight)
         }

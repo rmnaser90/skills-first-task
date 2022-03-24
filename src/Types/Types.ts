@@ -9,6 +9,8 @@ export interface State {
         fullName?: string
         email?: string
         books?: Book[]
+        err?:boolean
+        msg?:string
     }
     isLoogedIn: boolean
     books: Book[]
@@ -34,6 +36,8 @@ export interface Payload{
         fullName?: string
         email?: string
         books?: Book[]
+        err?:boolean
+        msg?:string
     }
     isLoogedIn?: boolean
     books?: Book[]
@@ -44,7 +48,7 @@ export interface Payload{
     }
 }
 export type Action = {
-    type: 'login' | 'logout' | 'getbooks' | 'inputHandler'
+    type: 'login' | 'logout' | 'getbooks' | 'inputHandler' | 'autoLogin'
     payload: Payload
 }
 export type ApiBook = {

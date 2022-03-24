@@ -5,9 +5,9 @@ type Props = {
     radius?: number
 }
 const CircleFrameStyled = styled.div<Props>`
-    width: ${({ radius }) => radius + 'px' || '256px'};
-    height: ${({ radius }) => radius + 'px' || '260px'};
-    border-radius: ${({ radius }) => radius? radius / 2 + 'px' : '130px'};
+    width: ${({ radius }) => radius + 'px'};
+    height: ${({ radius }) => radius + 'px'};
+    border-radius: 50%;
     background-color: ${colors.default};
     display: grid;
     align-items: center;

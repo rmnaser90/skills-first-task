@@ -20,6 +20,13 @@ type Props = {
 const Homepage: React.FC<Props> = ({ viewportHeight }) => {
     const navigate = useNavigate()
     const items = useSelector((state: State) => state.books)
+    const isLoggedIn = useSelector((state: State) => state.isLoogedIn)
+    const { fullName } = useSelector((state: State) => state.user)
+
+    const getStarted = function () {
+        navigate(isLoggedIn?'function':'signup')
+    }
+    
     return (
         <HomePageStyled viewportHeight={viewportHeight}>
             <TopNab />
@@ -29,9 +36,11 @@ const Homepage: React.FC<Props> = ({ viewportHeight }) => {
                         <Title fontSize="50px" className="title">
                             Netboox
                         </Title>
-                        <Title className="subtitle">All your books in one place</Title>
+                        <Title className="subtitle">
+                            {isLoggedIn ? 'Welcome back ' + fullName : 'All your books in one place '}{' '}
+                        </Title>
                         <div className="actionContainer">
-                            <ButtonP onClick={() => navigate('signup')}>Get started</ButtonP>
+                            <ButtonP onClick={getStarted}>Get started</ButtonP>
                         </div>
                     </div>
                     <div className="imgContainer">
@@ -40,7 +49,7 @@ const Homepage: React.FC<Props> = ({ viewportHeight }) => {
                 </div>
                 <div className="inspirationContainer">
                     <Title>This week inspiration</Title>
-                    <Carousel >
+                    <Carousel>
                         {items &&
                             items.map((item, i) => (
                                 <Card
@@ -62,7 +71,7 @@ const Homepage: React.FC<Props> = ({ viewportHeight }) => {
                             dolor blanditiis dicta iste rerum aliquid minima?
                         </Paragraph>
                     </div>
-                    <div/>
+                    <div />
                     <FeatureCard>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, dolor molestiae? Quos
                         pariatur dicta recusandae facere quod, aspernatur doloribus iusto. Repellendus laborum sapiente

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ButtonP from '../../Components/ButtonP/ButtonP'
 import InputLabel from '../../Components/InpuLabel/InputLabel'
 import Input from '../../Components/Inputs/Input'
@@ -10,32 +10,32 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Action, State } from '../../../Types/Types'
 import { INPUT_HANDLER } from '../../../StoreManager/actions'
+import Dispatcher from '../../../StoreManager/dispatcher'
 
 const SignIn: React.FC = () => {
     const navigate = useNavigate()
-    const dispatch = useDispatch()
+    const { loginInputHandler, login } = Dispatcher(useDispatch())
     const signInForm = useSelector((state: State) => state.forms.login)
     const { email, password } = signInForm
-    const inputHandler = function (property: 'email' | 'password', value: string) {
-        const action: Action = {
-            type: INPUT_HANDLER,
-            payload: {
-                inputHandler: {
-                    form: 'login',
-                    property,
-                    value
-                }
-            }
+    const isLoggedIn = useSelector((state: State) => state.isLoogedIn)
+
+    const submit = async function () {
+        const res = await login(signInForm)
+        if (!res.err) {
+            loginInputHandler('email', '')
+            loginInputHandler('password', '')
+            navigate('/')
         }
-        dispatch(action)
     }
 
-    const submit = function () {
-        const action:Action = {type:"login",payload:{}}
-    }
+    useEffect(() => {
+        if (isLoggedIn) {
+            navigate('/')
+        }
+    }, [])
 
     return (
-        <SignUpStyled>
+        <SignUpStyled onKeyPress={(e) => e.key === 'Enter' && submit()}>
             <SignUpHeader />
             <div className="signUpForm">
                 <div className="formHeader">
@@ -52,7 +52,7 @@ const SignIn: React.FC = () => {
                         <Input
                             placeholder="Email Address"
                             value={email}
-                            onChange={({ target }) => inputHandler('email', target.value)}
+                            onChange={({ target }) => loginInputHandler('email', target.value)}
                         />
                     </div>
                     <div className="inputContainer">
@@ -61,7 +61,7 @@ const SignIn: React.FC = () => {
                             placeholder="Password"
                             type="password"
                             value={password}
-                            onChange={({ target }) => inputHandler('password', target.value)}
+                            onChange={({ target }) => loginInputHandler('password', target.value)}
                         />
                     </div>
                 </div>
@@ -70,7 +70,7 @@ const SignIn: React.FC = () => {
                 </div>
                 <div className="actionsContainer">
                     <div className="buttonContainer">
-                        <ButtonP>Sign in</ButtonP>
+                        <ButtonP onClick={submit}>Sign in</ButtonP>
                     </div>
                     <div className="loginText">
                         I don&apos;t have an account <strong onClick={() => navigate('../signup')}>Sign Up</strong>
