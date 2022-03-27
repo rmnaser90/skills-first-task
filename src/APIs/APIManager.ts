@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Book, ApiBook } from '../Types/Types'
 
-const books = [
+const books: Book[] = [
     {
         title: 'Groups and Combinatorics',
         text: "In honor of Professor Michio Suzuki's 70th birthda…hers who shared close ties with Professor Suzuki.",
@@ -38,8 +38,8 @@ const user = {
 
 class APIManager {
     async getBooks() {
-        const data = await axios.get('https://www.googleapis.com/books/v1/volumes?q=michio')
-        const filteredData = data.data.items.filter(
+        const res = await axios.get('https://www.googleapis.com/books/v1/volumes?q=michio')
+        const filteredData = res.data.items.filter(
             (book: ApiBook) => book.volumeInfo.title && book.volumeInfo.description
         )
         return filteredData.map((apiBook: ApiBook) => {
@@ -52,12 +52,12 @@ class APIManager {
         })
     }
 
-    async AuthUser(signInForm: { email?: string; password?: string; fullName?: string; confirmPassword?: string }) {
+    async authUser(signInForm: { email?: string; password?: string; fullName?: string; confirmPassword?: string }) {
         // simulate db
         // send to back-end for authentication and return user
         const { email, password } = signInForm
-        if (email == 'rami@monday.com') {
-            return password == 'qweqwe' ? user : { err: true, msg: 'wrong password' }
+        if (email === 'rami@monday.com') {
+            return password === 'qweqwe' ? user : { err: true, msg: 'wrong password' }
         } else {
             return { err: true, msg: "user doesn't exist" }
         }

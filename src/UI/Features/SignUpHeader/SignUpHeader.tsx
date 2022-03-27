@@ -4,7 +4,10 @@ import SignUpHeaderStyled from './SignUpHeaderStyled'
 const SignUpHeader: React.FC = () => {
     return (
         <SignUpHeaderStyled>
-            <CircleFrame radius={window.innerWidth >= 768 ? 381 : 187} />
+            <CircleFrame
+                width={window.innerWidth >= 768 ? '381px' : '187px'}
+                height={window.innerWidth >= 768 ? '381px' : '187px'}
+            />
             <div className="circle" />
             <div className="hollowCircle" />
         </SignUpHeaderStyled>

@@ -31,24 +31,24 @@ export const reducer = function (
     switch (action.type) {
         case LOGIN:
             return produce(state, (draftState: State) => {
-                draftState.isLoogedIn = true
-                localStorage.setItem('user',JSON.stringify(action.payload.user))
-                if (action.payload.user) {
-                    draftState.user = action.payload.user
+                const curUser = action?.payload?.user
+                if (curUser) {
+                    localStorage.setItem('user', JSON.stringify(curUser))
+                    draftState.isLoogedIn = true
+                    draftState.user = curUser
                 }
             })
         case LOGOUT:
-            return produce(state,  (draftState: State) => {
+            return produce(state, (draftState: State) => {
                 draftState.user = {
                     fullName: '',
                     email: '',
-                    books:[],
+                    books: []
                 }
                 draftState.isLoogedIn = false
             })
         case GET_BOOKS:
             return produce(state, (draftState: State) => {
-
                 draftState.books = action.payload.books || draftState.books
             })
         case INPUT_HANDLER:
@@ -59,7 +59,6 @@ export const reducer = function (
                     draftState.forms[form][property] = action.payload.inputHandler?.value
                 }
             })
-
 
         default:
             return state

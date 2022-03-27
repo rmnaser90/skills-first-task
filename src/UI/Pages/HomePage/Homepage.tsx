@@ -24,9 +24,9 @@ const Homepage: React.FC<Props> = ({ viewportHeight }) => {
     const { fullName } = useSelector((state: State) => state.user)
 
     const getStarted = function () {
-        navigate(isLoggedIn?'function':'signup')
+        navigate(isLoggedIn ? 'function' : 'signup')
     }
-    
+
     return (
         <HomePageStyled viewportHeight={viewportHeight}>
             <TopNab />
@@ -37,14 +37,17 @@ const Homepage: React.FC<Props> = ({ viewportHeight }) => {
                             Netboox
                         </Title>
                         <Title className="subtitle">
-                            {isLoggedIn ? 'Welcome back ' + fullName : 'All your books in one place '}{' '}
+                            {isLoggedIn ? 'Welcome back ' + fullName : 'All your books in one place '}
                         </Title>
                         <div className="actionContainer">
                             <ButtonP onClick={getStarted}>Get started</ButtonP>
                         </div>
                     </div>
                     <div className="imgContainer">
-                        <CircleFrame radius={window.innerWidth > 768 ? 474 : 256} />
+                        <CircleFrame
+                            width={window.innerWidth > 768 ? '474px' : '256px'}
+                            height={window.innerWidth > 768 ? '474px' : '256px'}
+                        />
                     </div>
                 </div>
                 <div className="inspirationContainer">

@@ -2,11 +2,12 @@ import styled from 'styled-components'
 import colors from '../../Theme/Colors'
 
 type Props = {
-    radius?: number
+    width?: string
+    height?: string
 }
 const CircleFrameStyled = styled.div<Props>`
-    width: ${({ radius }) => radius + 'px'};
-    height: ${({ radius }) => radius + 'px'};
+    width: ${({ width }) => width};
+    height: ${({ height }) => height};
     border-radius: 50%;
     background-color: ${colors.default};
     display: grid;

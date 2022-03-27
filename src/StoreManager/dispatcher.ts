@@ -46,7 +46,7 @@ const Dispatcher = function (dispatch: (dispatcher: Action) => void) {
         fullName?: string
         confirmPassword?: string
     }) {
-        const user = await apiManager.AuthUser(signInForm)
+        const user = await apiManager.authUser(signInForm)
         if (!user.err) {
             const action: Action = {
                 type: LOGIN,
@@ -61,7 +61,7 @@ const Dispatcher = function (dispatch: (dispatcher: Action) => void) {
     }
 
     const autoLogin = async function () {
-        const user = JSON.parse(localStorage.user)
+        const user = JSON.parse(localStorage.user || '')
         if (user) {
             const action: Action = {
                 type: LOGIN,
