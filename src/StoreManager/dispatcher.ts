@@ -61,8 +61,8 @@ const Dispatcher = function (dispatch: (dispatcher: Action) => void) {
     }
 
     const autoLogin = async function () {
-        const user = JSON.parse(localStorage.user || '')
-        if (user) {
+        if (localStorage.user) {
+            const user = JSON.parse(localStorage.user)
             const action: Action = {
                 type: LOGIN,
                 payload: { user }

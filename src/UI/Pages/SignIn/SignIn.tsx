@@ -52,6 +52,7 @@ const SignIn: React.FC = () => {
                         <Input
                             placeholder="Email Address"
                             value={email}
+                            name="email"
                             onChange={({ target }) => loginInputHandler('email', target.value)}
                         />
                     </div>
@@ -60,6 +61,7 @@ const SignIn: React.FC = () => {
                         <Input
                             placeholder="Password"
                             type="password"
+                            name="password"
                             value={password}
                             onChange={({ target }) => loginInputHandler('password', target.value)}
                         />

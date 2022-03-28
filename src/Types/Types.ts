@@ -9,8 +9,8 @@ export interface State {
         fullName?: string
         email?: string
         books?: Book[]
-        err?:boolean
-        msg?:string
+        err?: boolean
+        msg?: string
     }
     isLoogedIn: boolean
     books: Book[]
@@ -20,24 +20,24 @@ export interface State {
             password?: string
             fullName?: string
             confirmPassword?: string
-
         }
         signUp: {
             fullName?: string
             email?: string
             password?: string
             confirmPassword?: string
+            agreed?: number | string
         }
     }
 }
 
-export interface Payload{
+export interface Payload {
     user?: {
         fullName?: string
         email?: string
         books?: Book[]
-        err?:boolean
-        msg?:string
+        err?: boolean
+        msg?: string
     }
     isLoogedIn?: boolean
     books?: Book[]

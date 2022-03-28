@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import { ErrorMessage, Form, Formik } from 'formik'
+import * as Yup from 'yup'
 import ButtonP from '../../Components/ButtonP/ButtonP'
 import CheckboxStyled from '../../Components/Checkbox/CheckboxStyled'
 import InputLabel from '../../Components/InpuLabel/InputLabel'
@@ -9,7 +10,6 @@ import Paragraph from '../../Components/Paragraph/Paragraph'
 import Title from '../../Components/Title/Title'
 import SignUpHeader from '../../Features/SignUpHeader/SignUpHeader'
 import SignUpStyled from './SignUpStyled'
-
 import { State } from '../../../Types/Types'
 import { useDispatch, useSelector } from 'react-redux'
 import Dispatcher from '../../../StoreManager/dispatcher'
@@ -18,9 +18,26 @@ const SignUp: React.FC = () => {
     const navigate = useNavigate()
     const { isLoogedIn, forms } = useSelector((state: State) => state)
     const { signUp } = forms
-    const { fullName, email, password, confirmPassword } = signUp
     const { signUpInputHandler } = Dispatcher(useDispatch())
+    const validate = Yup.object({
+        fullName: Yup.string().max(10, 'Name should be less than 10 chars').required('* required'),
+        email: Yup.string().email('Email is invalid').required('* required'),
+        password: Yup.string()
+            .min(8, 'password should be more than 8 characters')
+            .required('* required')
+            .matches(
+                /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]/,
+                'One Uppercase, One Lowercase, One Number and one special case Character'
+            ),
+        confirmPassword: Yup.string()
+            .oneOf([Yup.ref('password'), null], 'password must match')
+            .required('* required'),
+        agreed: Yup.boolean().equals([true], 'review and agree')
+    })
 
+    const onSubmit = function (values = signUp) {
+        console.log(values)
+    }
     useEffect(() => {
         if (isLoogedIn) {
             navigate('/')
@@ -39,54 +56,73 @@ const SignUp: React.FC = () => {
                         repudiandae inventore rem harum officiis. Aut!
                     </Paragraph>
                 </div>
-                <div className="inputsContainer">
-                    <div className="inputContainer">
-                        <InputLabel text="Full Name" />
-                        <Input
-                            value={fullName}
-                            placeholder="Full Name"
-                            onChange={({ target }) => signUpInputHandler('fullName', target.value)}
-                        />
-                    </div>
-                    <div className="inputContainer">
-                        <InputLabel text="Email" />
-                        <Input
-                            value={email}
-                            placeholder="Email Address"
-                            onChange={({ target }) => signUpInputHandler('email', target.value)}
-                        />
-                    </div>
-                    <div className="inputContainer">
-                        <InputLabel text="Password" />
-                        <Input
-                            value={password}
-                            placeholder="Password"
-                            type="password"
-                            onChange={({ target }) => signUpInputHandler('password', target.value)}
-                        />
-                    </div>
-                    <div className="inputContainer">
-                        <InputLabel text="Confirm password" />
-                        <Input
-                            value={confirmPassword}
-                            placeholder="Confirm password"
-                            type="password"
-                            onChange={({ target }) => signUpInputHandler('confirmPassword', target.value)}
-                        />
-                    </div>
-                </div>
-                <div className="actionsContainer">
-                    <div className="agreementContainer">
-                        <CheckboxStyled type={'checkbox'} />
-                        <InputLabel text="I Confirm that I have read the Terms and Conditions" />
-                    </div>
-                    <div className="buttonContainer">
-                        <ButtonP>Create new Account</ButtonP>
-                    </div>
-                    <div className="loginText">
-                        I already have an account <strong onClick={() => navigate('../signin')}>login</strong>
-                    </div>
-                </div>
+                <Formik initialValues={signUp} onSubmit={onSubmit} validationSchema={validate}>
+                    {({ handleSubmit, handleChange, values }) => (
+                        <Form onSubmit={handleSubmit}>
+                            {console.log(values)}
+                            <div className="inputsContainer">
+                                <div className="inputContainer">
+                                    <InputLabel text="Full Name" />
+                                    <Input
+                                        value={values.fullName}
+                                        placeholder="Full Name"
+                                        name="fullName"
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                                <div className="inputContainer">
+                                    <InputLabel text="Email" />
+                                    <Input
+                                        value={values.email}
+                                        name="email"
+                                        type="email"
+                                        placeholder="Email Address"
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                                <div className="inputContainer">
+                                    <InputLabel text="Password" />
+                                    <Input
+                                        value={values.password}
+                                        name="password"
+                                        placeholder="Password"
+                                        type="password"
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                                <div className="inputContainer">
+                                    <InputLabel text="Confirm password" />
+                                    <Input
+                                        value={values.confirmPassword}
+                                        name="confirmPassword"
+                                        placeholder="Confirm password"
+                                        type="password"
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                            </div>
+                            <div className="actionsContainer">
+                                <div className="agreementContainer">
+                                    <CheckboxStyled
+                                        type="checkbox"
+                                        name="agreed"
+                                        value={values.agreed}
+                                        onChange={handleChange}
+                                    />
+                                    <InputLabel text="I Confirm that I have read the Terms and Conditions" />
+                                    <ErrorMessage name="agreed" />
+                                </div>
+                                <div className="buttonContainer">
+                                    <ButtonP onClick={handleSubmit}>Create new Account</ButtonP>
+                                </div>
+                                <div className="loginText">
+                                    I already have an account{' '}
+                                    <strong onClick={() => navigate('../signin')}>login</strong>
+                                </div>
+                            </div>
+                        </Form>
+                    )}
+                </Formik>
             </div>
         </SignUpStyled>
     )

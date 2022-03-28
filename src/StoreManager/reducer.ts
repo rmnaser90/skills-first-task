@@ -15,14 +15,13 @@ export const reducer = function (
             login: {
                 email: '',
                 password: '',
-                fullName: '',
-                confirmPassword: ''
             },
             signUp: {
                 fullName: '',
                 email: '',
                 password: '',
-                confirmPassword: ''
+                confirmPassword: '',
+                agreed:''
             }
         }
     },
