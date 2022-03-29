@@ -11,16 +11,20 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Action, State } from '../../../Types/Types'
 import { INPUT_HANDLER } from '../../../StoreManager/actions'
 import Dispatcher from '../../../StoreManager/dispatcher'
+import { Form, Formik } from 'formik'
+import * as Yup from 'yup'
 
 const SignIn: React.FC = () => {
     const navigate = useNavigate()
     const { loginInputHandler, login } = Dispatcher(useDispatch())
     const signInForm = useSelector((state: State) => state.forms.login)
-    const { email, password } = signInForm
     const isLoggedIn = useSelector((state: State) => state.isLoogedIn)
+    const validate = Yup.object({
+        email: Yup.string().email('Enter a valid email')
+    })
 
-    const submit = async function () {
-        const res = await login(signInForm)
+    const submit = async function (values = signInForm) {
+        const res = await login(values)
         if (!res.err) {
             loginInputHandler('email', '')
             loginInputHandler('password', '')
@@ -32,7 +36,7 @@ const SignIn: React.FC = () => {
         if (isLoggedIn) {
             navigate('/')
         }
-    }, [])
+    }, [isLoggedIn])
 
     return (
         <SignUpStyled onKeyPress={(e) => e.key === 'Enter' && submit()}>
@@ -46,38 +50,45 @@ const SignIn: React.FC = () => {
                         repudiandae inventore rem harum officiis. Aut!
                     </Paragraph>
                 </div>
-                <div className="inputsContainer">
-                    <div className="inputContainer">
-                        <InputLabel text="Email" />
-                        <Input
-                            placeholder="Email Address"
-                            value={email}
-                            name="email"
-                            onChange={({ target }) => loginInputHandler('email', target.value)}
-                        />
-                    </div>
-                    <div className="inputContainer">
-                        <InputLabel text="Password" />
-                        <Input
-                            placeholder="Password"
-                            type="password"
-                            name="password"
-                            value={password}
-                            onChange={({ target }) => loginInputHandler('password', target.value)}
-                        />
-                    </div>
-                </div>
-                <div className="forgetPasswordText">
-                    <strong>Forgot password</strong>
-                </div>
-                <div className="actionsContainer">
-                    <div className="buttonContainer">
-                        <ButtonP onClick={submit}>Sign in</ButtonP>
-                    </div>
-                    <div className="loginText">
-                        I don&apos;t have an account <strong onClick={() => navigate('../signup')}>Sign Up</strong>
-                    </div>
-                </div>
+                <Formik initialValues={signInForm} onSubmit={(values) => submit(values)} validationSchema={validate}>
+                    {({ handleSubmit, values, handleChange }) => (
+                        <Form>
+                            <div className="inputsContainer">
+                                <div className="inputContainer">
+                                    <InputLabel text="Email" />
+                                    <Input
+                                        placeholder="Email Address"
+                                        value={values.email}
+                                        name="email"
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                                <div className="inputContainer">
+                                    <InputLabel text="Password" />
+                                    <Input
+                                        placeholder="Password"
+                                        type="password"
+                                        name="password"
+                                        value={values.password}
+                                        onChange={handleChange}
+                                    />
+                                </div>
+                            </div>
+                            <div className="forgetPasswordText">
+                                <strong>Forgot password</strong>
+                            </div>
+                            <div className="actionsContainer">
+                                <div className="buttonContainer">
+                                    <ButtonP onClick={handleSubmit}>Sign in</ButtonP>
+                                </div>
+                                <div className="loginText">
+                                    I don&apos;t have an account{' '}
+                                    <strong onClick={() => navigate('../signup')}>Sign Up</strong>
+                                </div>
+                            </div>
+                        </Form>
+                    )}
+                </Formik>
             </div>
         </SignUpStyled>
     )
