@@ -50,7 +50,7 @@ const SignIn: React.FC = () => {
                         repudiandae inventore rem harum officiis. Aut!
                     </Paragraph>
                 </div>
-                <Formik initialValues={signInForm} onSubmit={(values) => submit(values)} validationSchema={validate}>
+                <Formik initialValues={signInForm} onSubmit={(values) => submit(values)} validationSchema={validate} validateOnBlur>
                     {({ handleSubmit, values, handleChange }) => (
                         <Form>
                             <div className="inputsContainer">

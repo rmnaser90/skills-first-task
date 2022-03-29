@@ -56,10 +56,9 @@ const SignUp: React.FC = () => {
                         repudiandae inventore rem harum officiis. Aut!
                     </Paragraph>
                 </div>
-                <Formik initialValues={signUp} onSubmit={onSubmit} validationSchema={validate}>
-                    {({ handleSubmit, handleChange, values }) => (
+                <Formik initialValues={signUp} onSubmit={onSubmit} validationSchema={validate} validateOnChange>
+                    {({ handleSubmit, handleChange, values, errors, touched }) => (
                         <Form onSubmit={handleSubmit}>
-                            {console.log(values)}
                             <div className="inputsContainer">
                                 <div className="inputContainer">
                                     <InputLabel text="Full Name" />
@@ -67,7 +66,9 @@ const SignUp: React.FC = () => {
                                         value={values.fullName}
                                         placeholder="Full Name"
                                         name="fullName"
+                                        error={errors['fullName']}
                                         onChange={handleChange}
+                                        touched={touched.fullName}
                                     />
                                 </div>
                                 <div className="inputContainer">
@@ -76,6 +77,8 @@ const SignUp: React.FC = () => {
                                         value={values.email}
                                         name="email"
                                         type="email"
+                                        error={errors['email']}
+                                        touched={touched.email}
                                         placeholder="Email Address"
                                         onChange={handleChange}
                                     />
@@ -85,6 +88,8 @@ const SignUp: React.FC = () => {
                                     <Input
                                         value={values.password}
                                         name="password"
+                                        error={errors['password']}
+                                        touched={touched.password}
                                         placeholder="Password"
                                         type="password"
                                         onChange={handleChange}
@@ -95,6 +100,8 @@ const SignUp: React.FC = () => {
                                     <Input
                                         value={values.confirmPassword}
                                         name="confirmPassword"
+                                        touched={touched.confirmPassword}
+                                        error={errors.confirmPassword}
                                         placeholder="Confirm password"
                                         type="password"
                                         onChange={handleChange}

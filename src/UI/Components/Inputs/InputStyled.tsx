@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import colors from '../../Theme/Colors'
 
 type Props = {
-    invalid?: string
+    invalid?: boolean
 }
 const InputStyled = styled.div<Props>`
     width: 100%;
