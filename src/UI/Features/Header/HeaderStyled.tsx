@@ -10,6 +10,7 @@ const HeaderStyled = styled.div`
     align-items: center;
     padding-right: 7.2vw;
     padding-left: 6.4vw;
+    position: relative;
     & .menuIcon {
         justify-self: flex-end;
     }

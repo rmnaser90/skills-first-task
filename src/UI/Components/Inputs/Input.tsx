@@ -17,7 +17,7 @@ const Input: React.FC<Props> = (props) => {
 useEffect(()=>{
     console.log(error);
     
-},[error])
+},[error,touched])
     return (
         <InputStyled invalid={!!(error && touched)}>
             <Field
@@ -27,7 +27,7 @@ useEffect(()=>{
                 onChange={field.onChange}
                 placeholder={placeholder}
             />
-            {error && !touched && <div className="errorMsg">{error}</div>}
+            {error && touched && <div className="errorMsg">{error}</div>}
         </InputStyled>
     )
 }

@@ -39,7 +39,7 @@ const SignIn: React.FC = () => {
     }, [isLoggedIn])
 
     return (
-        <SignUpStyled onKeyPress={(e) => e.key === 'Enter' && submit()}>
+        <SignUpStyled>
             <SignUpHeader />
             <div className="signUpForm">
                 <div className="formHeader">
@@ -50,9 +50,14 @@ const SignIn: React.FC = () => {
                         repudiandae inventore rem harum officiis. Aut!
                     </Paragraph>
                 </div>
-                <Formik initialValues={signInForm} onSubmit={(values) => submit(values)} validationSchema={validate} validateOnBlur>
+                <Formik
+                    initialValues={signInForm}
+                    onSubmit={(values) => submit(values)}
+                    validationSchema={validate}
+                    validateOnBlur
+                >
                     {({ handleSubmit, values, handleChange }) => (
-                        <Form>
+                        <Form onKeyPress={(e) => e.key === 'Enter' && submit(values)}>
                             <div className="inputsContainer">
                                 <div className="inputContainer">
                                     <InputLabel text="Email" />
