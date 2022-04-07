@@ -13,16 +13,44 @@ const HomePageStyled = styled.div<Props>`
         grid-template-rows: 1fr 1fr 2fr;
         align-items: center;
     }
+    & .inputContainer{
+        margin-right: 6.4vw;
+        margin-top: 10px;
+        margin-bottom:10px ;
+    }
+    & .inputContainer input{
+        text-align: center;
+    }
+
     & .actionsContainer {
         display: flexbox;
         flex-direction: row;
         column-gap: 10px;
         overflow-x: scroll;
     }
-    & .cardsContainer{
+
+    & .cardsContainer {
         display: flex;
         flex-direction: column;
         row-gap: 20px;
+    }
+
+    @media only screen and (min-width: 768px) {
+        & .cardsContainer {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            row-gap: 40px;
+            padding-left: 5%;
+            padding-right: 5%;
+            padding-top: 40px;
+        }
+        & .cardContainer {
+            width: 286px;
+            height: 400px;
+            background-color: red;
+            margin: 0px;
+        }
     }
 `
 

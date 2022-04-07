@@ -4,9 +4,7 @@ body {
     font-weight: 400;
     width: '100vw';
 }
-.app {
-    width: 100vw;
-}
+
 ::-webkit-scrollbar {
     display: none;
 }

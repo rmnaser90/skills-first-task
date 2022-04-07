@@ -15,6 +15,7 @@ const ButtonStyled = styled.div<Props>`
     height: 36px;
     border-radius: 56px;
     transition: 0.4s;
+    cursor: pointer;
     & .icon {
         background-color: ${colors.text.secondary};
         justify-self: flex-end;

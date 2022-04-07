@@ -1,6 +1,6 @@
 import APIManager from '../APIs/APIManager'
-import { Action } from '../Types/Types'
-import { GET_BOOKS, INPUT_HANDLER, LOGIN, LOGOUT } from './actions'
+import { Action, SignUpForm, User } from '../Types/Types'
+import { GET_BOOKS, INPUT_HANDLER, LOGIN, LOGOUT, SEARCH_BOOKS } from './actions'
 
 const apiManager = new APIManager()
 
@@ -10,6 +10,14 @@ const Dispatcher = function (dispatch: (dispatcher: Action) => void) {
         const action: Action = { type: GET_BOOKS, payload: { books } }
         dispatch(action)
     }
+
+    const handleSearchBook = async function (key:string) {
+        const searchBooks = await apiManager.searchBooks(key)
+        console.log(searchBooks);
+        const action: Action = { type: SEARCH_BOOKS, payload: { searchBooks } }
+        dispatch(action)
+    }
+    
     const loginInputHandler = function (property: 'email' | 'password', value: string) {
         const action: Action = {
             type: INPUT_HANDLER,
@@ -81,7 +89,17 @@ const Dispatcher = function (dispatch: (dispatcher: Action) => void) {
         dispatch(action)
     }
 
-    return { getBooks, loginInputHandler, login, autoLogin, signOut, signUpInputHandler }
+    const signUpHandler = function (values:SignUpForm) {
+        const {fullName,email} = values
+        const user:User = {fullName,email,books:[]}
+        const action: Action = {
+            type: LOGIN,
+            payload: { user }
+        }
+        dispatch(action)
+    }
+
+    return { getBooks,handleSearchBook, loginInputHandler, login, autoLogin, signOut, signUpInputHandler, signUpHandler }
 }
 
 export default Dispatcher

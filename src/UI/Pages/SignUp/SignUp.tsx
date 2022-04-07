@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ErrorMessage, Form, Formik } from 'formik'
-import * as Yup from 'yup'
 import ButtonP from '../../Components/ButtonP/ButtonP'
 import CheckboxStyled from '../../Components/Checkbox/CheckboxStyled'
 import InputLabel from '../../Components/InpuLabel/InputLabel'
@@ -13,36 +12,22 @@ import SignUpStyled from './SignUpStyled'
 import { State } from '../../../Types/Types'
 import { useDispatch, useSelector } from 'react-redux'
 import Dispatcher from '../../../StoreManager/dispatcher'
-
+import { validate } from './ValidationSchema'
 const SignUp: React.FC = () => {
     const navigate = useNavigate()
     const { isLoogedIn, forms } = useSelector((state: State) => state)
     const { signUp } = forms
-    const { signUpInputHandler } = Dispatcher(useDispatch())
-    const validate = Yup.object({
-        fullName: Yup.string().max(10, 'Name should be less than 10 chars').required('* required'),
-        email: Yup.string().email('Email is invalid').required('* required'),
-        password: Yup.string()
-            .min(8, 'password should be more than 8 characters')
-            .required('* required')
-            .matches(
-                /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]/,
-                'One Uppercase, One Lowercase, One Number and one special case Character'
-            ),
-        confirmPassword: Yup.string()
-            .oneOf([Yup.ref('password'), null], 'password must match')
-            .required('* required'),
-        agreed: Yup.boolean().equals([true], 'review and agree')
-    })
+    const { signUpHandler } = Dispatcher(useDispatch())
 
-    const onSubmit = function (values = signUp) {
-        console.log(values)
+    const onSubmit = (values = signUp) => {
+        signUpHandler(values)
     }
+    
     useEffect(() => {
         if (isLoogedIn) {
             navigate('/')
         }
-    }, [])
+    }, [isLoogedIn])
 
     return (
         <SignUpStyled>

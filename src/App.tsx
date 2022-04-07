@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { Action, Book } from './Types/Types'
-
 import './App.css'
 import AppStyled from './AppStyled'
 import Header from './UI/Features/Header/Header'
@@ -14,8 +12,7 @@ import Dispatcher from './StoreManager/dispatcher'
 
 const App: React.FC = function () {
     const [viewportHeight, setViewportHeight] = useState(window.innerHeight)
-    const {getBooks, autoLogin} = Dispatcher(useDispatch())
-
+    const { getBooks, autoLogin } = Dispatcher(useDispatch())
 
     useEffect(() => {
         getBooks()

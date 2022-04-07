@@ -51,6 +51,20 @@ class APIManager {
             return book
         })
     }
+    async searchBooks(key:string) {
+        const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${key}`)
+        const filteredData = res.data.items.filter(
+            (book: ApiBook) => book.volumeInfo.title && book.volumeInfo.description
+        )
+        return filteredData.map((apiBook: ApiBook) => {
+            const book: Book = {
+                title: apiBook.volumeInfo.title,
+                text: apiBook.volumeInfo.description,
+                img: apiBook.volumeInfo.imageLinks.thumbnail
+            }
+            return book
+        })
+    }
 
     async authUser(signInForm: { email?: string; password?: string; fullName?: string; confirmPassword?: string }) {
         // simulate db

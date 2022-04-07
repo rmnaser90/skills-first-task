@@ -8,20 +8,16 @@ import SignUpHeader from '../../Features/SignUpHeader/SignUpHeader'
 import SignUpStyled from '../SignUp/SignUpStyled'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { Action, State } from '../../../Types/Types'
-import { INPUT_HANDLER } from '../../../StoreManager/actions'
+import {  State } from '../../../Types/Types'
 import Dispatcher from '../../../StoreManager/dispatcher'
 import { Form, Formik } from 'formik'
-import * as Yup from 'yup'
+import { validate } from './ValidationSchema'
 
 const SignIn: React.FC = () => {
     const navigate = useNavigate()
     const { loginInputHandler, login } = Dispatcher(useDispatch())
     const signInForm = useSelector((state: State) => state.forms.login)
     const isLoggedIn = useSelector((state: State) => state.isLoogedIn)
-    const validate = Yup.object({
-        email: Yup.string().email('Enter a valid email')
-    })
 
     const submit = async function (values = signInForm) {
         const res = await login(values)
@@ -56,7 +52,7 @@ const SignIn: React.FC = () => {
                     validationSchema={validate}
                     validateOnBlur
                 >
-                    {({ handleSubmit, values, handleChange }) => (
+                    {({ handleSubmit, values, handleChange, touched, errors }) => (
                         <Form onKeyPress={(e) => e.key === 'Enter' && submit(values)}>
                             <div className="inputsContainer">
                                 <div className="inputContainer">
@@ -65,6 +61,8 @@ const SignIn: React.FC = () => {
                                         placeholder="Email Address"
                                         value={values.email}
                                         name="email"
+                                        touched={touched.email}
+                                        error={errors.email}
                                         onChange={handleChange}
                                     />
                                 </div>

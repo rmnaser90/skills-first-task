@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import colors from '../../Theme/Colors'
 
 type Props = {
-    isShown?:boolean
+    isShown?: boolean
 }
 const HeaderStyled = styled.div<Props>`
     background-color: ${colors.default};
@@ -21,13 +21,19 @@ const HeaderStyled = styled.div<Props>`
         width: 100%;
         height: 100%;
     }
-    & .actionContainer{
+    & .actionContainer {
         display: grid;
         width: 100%;
         grid-template-columns: 1fr 1fr;
     }
-    & .actionContainer div{
+    & .actionContainer div {
         position: relative;
+    }
+    @media only screen and (min-width: 768px) {
+        & .paraContainer {
+            width: 60%;
+            height: 100%;
+        }
     }
 `
 export default HeaderStyled
