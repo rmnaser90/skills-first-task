@@ -4,7 +4,7 @@ import Card from '../Card'
 import { MockBookNoImg, MockBookWithImg } from '../../../MockComponents/MockBooks'
 
 const handleClick = jest.fn
-const className = "testing"
+const className = 'testing'
 describe('Card testing', () => {
     it('should render the card with title and text', () => {
         render(<Card onClick={handleClick} item={MockBookNoImg} />)
@@ -43,11 +43,10 @@ describe('Card testing', () => {
         const imgElement = screen.queryByRole('grid')
         expect(imgElement).toHaveStyle('width:500px')
     })
-    
+
     it('should have the passed className prop as a class', () => {
         render(<Card onClick={handleClick} className={className} item={MockBookWithImg} />)
         const imgElement = screen.queryByRole('grid')
         expect(imgElement).toHaveClass(className)
     })
-   
 })

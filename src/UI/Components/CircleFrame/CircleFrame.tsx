@@ -5,6 +5,6 @@ type Props = {
     height?: string
 }
 const CircleFrame: React.FC<Props> = ({ width = '256px', height = '256px' }) => {
-    return <CircleFrameStyled width={width} height={height}></CircleFrameStyled>
+    return <CircleFrameStyled role="grid" width={width} height={height}></CircleFrameStyled>
 }
 export default CircleFrame
