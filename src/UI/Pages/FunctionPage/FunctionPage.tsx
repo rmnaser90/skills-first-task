@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ButtonS from '../../Components/ButtonS/ButtonS'
 import Card from '../../Components/Card/Card'
@@ -11,6 +11,7 @@ import Input from '../../Components/Inputs/Input'
 import InputLabel from '../../Components/InpuLabel/InputLabel'
 import InputStyled from '../../Components/Inputs/InputStyled'
 import Dispatcher from '../../../StoreManager/dispatcher'
+import { useNavigate } from 'react-router-dom'
 type Props = {
     viewportHeight: number
 }
@@ -19,6 +20,8 @@ const FunctionPage: React.FC<Props> = ({ viewportHeight }) => {
     const [searchValue, setSearchValue] = useState<string>('')
     const items = useSelector((state: State) => state.searchBooks)
     const { handleSearchBook } = Dispatcher(useDispatch())
+    const { isLoogedIn  } = useSelector((state: State) => state)
+    const navigate = useNavigate()
 
 
     const handleChange: React.ChangeEventHandler<HTMLInputElement> = function ({ target }) {
@@ -30,6 +33,11 @@ const FunctionPage: React.FC<Props> = ({ viewportHeight }) => {
             handleSearchBook(searchValue)
         }
     }
+    useEffect(() => {
+        if (!isLoogedIn) {
+            navigate('/')
+        }
+    }, [isLoogedIn])
     return (
         <FunctionPageStyled viewportHeight={viewportHeight}>
             <HeaderSection />
@@ -39,7 +47,7 @@ const FunctionPage: React.FC<Props> = ({ viewportHeight }) => {
                         <input onKeyPress={handleKeySubmit} value={searchValue} onChange={handleChange} name="search" placeholder="Search by Author, Genre, year, title" />
                     </InputStyled>
                 </div>
-                <Title>All Results</Title>
+                <Title>All Results ({items.length})</Title>
 
                 <SubTitle>Sort by</SubTitle>
                 <div className="actionsContainer">

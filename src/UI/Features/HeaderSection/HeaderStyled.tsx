@@ -16,7 +16,6 @@ const HeaderStyled = styled.div<Props>`
     position: relative;
     display: grid;
     grid-template-rows: 1fr 3fr 1fr;
-
     & .paraContainer {
         width: 100%;
         height: 100%;

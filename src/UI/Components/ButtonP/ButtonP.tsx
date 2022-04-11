@@ -12,7 +12,7 @@ const ButtonP: React.FC<Props> = ({ onClick, children}) => {
     const { divStyle } = styles
     divStyle.width = isHovered ? '95%' : '90%'
     return (
-        <div 
+        <div role="button"
             onClick={onClick}
             style={{ ...divStyle }}
             onMouseEnter={() => seIsHovered(true)}

@@ -13,7 +13,7 @@ const getIntials: (name: string) => string = function (name) {
 const Avatar: React.FC<Props> = ({ name, diameter = '50px' }) => {
     const intials = getIntials(name)
 
-    return <AvatarStyled diameter={diameter}>{intials}</AvatarStyled>
+    return <AvatarStyled role="paragraph" className='avatar' diameter={diameter}>{intials.toUpperCase()}</AvatarStyled>
 }
 
 export default Avatar

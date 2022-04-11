@@ -107,10 +107,14 @@ const HomePageStyled = styled.div<Props>`
         }
         & .featuresContainer{
             display: grid;
+            width: 90%;
             grid-template-columns: 1fr 1fr;
             align-items: center;
             justify-items: center;
             column-gap: 20px;
+        }
+        & .featuresContainer div{
+            width: 80%;
         }
     }
 `

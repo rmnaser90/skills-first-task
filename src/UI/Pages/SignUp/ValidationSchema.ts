@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
 export const validate = Yup.object({
-    fullName: Yup.string().max(10, 'Name should be less than 10 chars').required('* required'),
+    fullName: Yup.string().max(40, 'Name should be less than 40 chars').required('* required'),
     email: Yup.string().email('Email is invalid').required('* required'),
     password: Yup.string()
         .min(8, 'password should be more than 8 characters')

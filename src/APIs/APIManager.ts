@@ -52,7 +52,7 @@ class APIManager {
         })
     }
     async searchBooks(key:string) {
-        const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${key}`)
+        const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${key}&maxResult=40`)
         const filteredData = res.data.items.filter(
             (book: ApiBook) => book.volumeInfo.title && book.volumeInfo.description
         )

@@ -12,6 +12,7 @@ import Dispatcher from './StoreManager/dispatcher'
 
 const App: React.FC = function () {
     const [viewportHeight, setViewportHeight] = useState(window.innerHeight)
+    const [viewportWidth, setViewportWidth] = useState(window.innerWidth)
     const { getBooks, autoLogin } = Dispatcher(useDispatch())
 
     useEffect(() => {
@@ -19,6 +20,7 @@ const App: React.FC = function () {
         autoLogin()
         window.onresize = function () {
             setViewportHeight(window.innerHeight)
+            setViewportWidth(window.innerWidth)
         }
     }, [])
 
@@ -27,7 +29,7 @@ const App: React.FC = function () {
             <BrowserRouter>
                 <Header />
                 <Routes>
-                    <Route index element={<Homepage viewportHeight={viewportHeight} />} />
+                    <Route index element={<Homepage viewportWidth={viewportWidth} viewportHeight={viewportHeight} />} />
                     <Route path="signin" element={<SignIn />} />
                     <Route path="signup" element={<SignUp />} />
                     <Route path="function/" element={<FunctionPage viewportHeight={viewportHeight} />} />

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import colors from "../../Theme/Colors";
-const AvatarStyled = styled.div<{diameter:string}>`
+const AvatarStyled = styled.p<{diameter:string}>`
     width: ${({diameter='50px'})=>diameter};
     height:${({diameter='50px'})=>diameter};;
     border-radius: 50%;

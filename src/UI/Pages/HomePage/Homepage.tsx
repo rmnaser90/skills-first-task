@@ -5,19 +5,18 @@ import Title from '../../Components/Title/Title'
 import TopNab from '../../Features/TopNav/TopNab'
 import HomePageStyled from './HomePageStyled'
 import Card from '../../Components/Card/Card'
-import LeftArrowButton from '../../Components/LeftArrowButton/LeftArrowButton'
-import RightArrowButton from '../../Components/RightArrowButton/RightArrowButton'
 import FeatureCard from '../../Components/FeatureCard/FeatureCard'
 import Paragraph from '../../Components/Paragraph/Paragraph'
 import { useNavigate } from 'react-router-dom'
-import { Book, State } from '../../../Types/Types'
+import {  State } from '../../../Types/Types'
 import { useSelector } from 'react-redux'
 import Carousel from '../../Components/Carousel/Carousel'
 type Props = {
     viewportHeight: number
+    viewportWidth: number
 }
 
-const Homepage: React.FC<Props> = ({ viewportHeight }) => {
+const Homepage: React.FC<Props> = ({ viewportHeight,viewportWidth }) => {
     const navigate = useNavigate()
     const items = useSelector((state: State) => state.books)
     const isLoggedIn = useSelector((state: State) => state.isLoogedIn)
@@ -45,8 +44,8 @@ const Homepage: React.FC<Props> = ({ viewportHeight }) => {
                     </div>
                     <div className="imgContainer">
                         <CircleFrame
-                            width={window.innerWidth > 768 ? '474px' : '256px'}
-                            height={window.innerWidth > 768 ? '474px' : '256px'}
+                            width={viewportWidth > 768 ? '474px' : '256px'}
+                            height={viewportWidth > 768 ? '474px' : '256px'}
                         />
                     </div>
                 </div>

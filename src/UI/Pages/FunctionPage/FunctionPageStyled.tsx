@@ -10,7 +10,7 @@ const HomePageStyled = styled.div<Props>`
         margin-left: 6.4vw;
         margin-top: 20px;
         display: grid;
-        grid-template-rows: 1fr 1fr 2fr;
+        grid-template-rows: repeat(4,1fr);
         align-items: center;
     }
     & .inputContainer{
@@ -30,6 +30,7 @@ const HomePageStyled = styled.div<Props>`
     }
 
     & .cardsContainer {
+        margin-top: 50px;
         display: flex;
         flex-direction: column;
         row-gap: 20px;
