@@ -9,15 +9,17 @@ type Props = {
     width?: string
     height?: string
     onClick?: () => void
-    className?:string
+    className?: string
 }
 
-const Card: React.FC<Props> = ({ item, width, height, onClick,className }) => {
+const Card: React.FC<Props> = ({ item, width, height, onClick, className }) => {
     const { title, img, text } = item
     return (
-        <CardStyled width={width} height={height} onClick={onClick} className={className} >
-            <div className="img">{img ? <img src={img} /> : null}</div>
-            <div className="contentContainer">
+        <CardStyled role={'grid'} width={width} height={height} onClick={onClick} className={className}>
+            <div role={'gridcell'} className="img">
+                {img ? <img src={img} /> : null}
+            </div>
+            <div role={'gridcell'} className="contentContainer">
                 <div className="titleContainer">{width ? <SubTitle>{title}</SubTitle> : <Title>{title}</Title>}</div>
                 <div className="descriptionContainer">{text}</div>
             </div>

@@ -27,6 +27,7 @@ const SignIn: React.FC = () => {
             navigate('/')
         }
     }
+    const navigateToSinUp = () => navigate('../signup')
 
     useEffect(() => {
         if (isLoggedIn) {
@@ -48,7 +49,7 @@ const SignIn: React.FC = () => {
                 </div>
                 <Formik
                     initialValues={signInForm}
-                    onSubmit={(values) => submit(values)}
+                    onSubmit={submit}
                     validationSchema={validate}
                     validateOnBlur
                 >
@@ -86,7 +87,7 @@ const SignIn: React.FC = () => {
                                 </div>
                                 <div className="loginText">
                                     I don&apos;t have an account{' '}
-                                    <strong onClick={() => navigate('../signup')}>Sign Up</strong>
+                                    <strong onClick={navigateToSinUp}>Sign Up</strong>
                                 </div>
                             </div>
                         </Form>

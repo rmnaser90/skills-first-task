@@ -8,7 +8,7 @@ type Props = {
 }
 const LeftArrowButton: React.FC<Props> = ({ onClick, disabled }) => {
     return (
-        <LeftArrowStyled disabled={disabled} onClick={disabled ? () => console.log('disabled') : onClick}>
+        <LeftArrowStyled role={"button"} disabled={disabled} onClick={disabled ? () => console.log('disabled') : onClick}>
             <FontAwesomeIcon icon={faAngleLeft} />
         </LeftArrowStyled>
     )

@@ -8,11 +8,13 @@ const ProfileCard: React.FC = () => {
     const [shouldDisplay, setShouldDisplay] = useState<boolean>(false)
     const { user } = useSelector((state: State) => state)
     const { signOut } = Dispatcher(useDispatch())
+    const showProfileCard = () => setShouldDisplay(true)
+    const hideProfileCard = () => setShouldDisplay(false)
 
     return (
-        <ProfileCardStyled onMouseLeave={()=>setShouldDisplay(false)} shouldDisplay={shouldDisplay} >
+        <ProfileCardStyled onMouseLeave={hideProfileCard} shouldDisplay={shouldDisplay} >
             <div className="mainContainer">
-            <div className="detailsContainer" onClick={() => setShouldDisplay(true)}>
+            <div className="detailsContainer" onClick={showProfileCard}>
                 <Avatar name={user.fullName || ''} diameter={shouldDisplay ? '120px' : '60px'} />
                 {shouldDisplay && <h2>{user.fullName}</h2>}
             </div>

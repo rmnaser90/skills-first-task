@@ -22,7 +22,7 @@ const SignUp: React.FC = () => {
     const onSubmit = (values = signUp) => {
         signUpHandler(values)
     }
-    
+    const navigateToSignIn = () => navigate('../signin')
     useEffect(() => {
         if (isLoogedIn) {
             navigate('/')
@@ -108,8 +108,7 @@ const SignUp: React.FC = () => {
                                     <ButtonP onClick={handleSubmit}>Create new Account</ButtonP>
                                 </div>
                                 <div className="loginText">
-                                    I already have an account{' '}
-                                    <strong onClick={() => navigate('../signin')}>login</strong>
+                                    I already have an account <strong onClick={navigateToSignIn}>login</strong>
                                 </div>
                             </div>
                         </Form>

@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import colors from '../../Theme/Colors'
 
 const SignUpStyled = styled.div`
     position: absolute;

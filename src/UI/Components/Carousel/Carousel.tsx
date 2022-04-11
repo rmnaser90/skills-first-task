@@ -32,7 +32,7 @@ const Carousel: React.FC<Props> = ({ className, children }) => {
                 </CarouselItem>
             </div>
             <div className="navbtns">
-                <LeftArrowButton onClick={decrement} disabled={currentItem === 0} />
+                <LeftArrowButton  onClick={decrement} disabled={currentItem === 0} />
                 <RightArrowButton onClick={increment} disabled={currentItem === length - 1} />
             </div>
         </CarouselStyled>

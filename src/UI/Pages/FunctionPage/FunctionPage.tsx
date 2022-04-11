@@ -7,8 +7,6 @@ import Title from '../../Components/Title/Title'
 import HeaderSection from '../../Features/HeaderSection/HeaderSection'
 import FunctionPageStyled from './FunctionPageStyled'
 import { State } from '../../../Types/Types'
-import Input from '../../Components/Inputs/Input'
-import InputLabel from '../../Components/InpuLabel/InputLabel'
 import InputStyled from '../../Components/Inputs/InputStyled'
 import Dispatcher from '../../../StoreManager/dispatcher'
 import { useNavigate } from 'react-router-dom'
@@ -20,15 +18,14 @@ const FunctionPage: React.FC<Props> = ({ viewportHeight }) => {
     const [searchValue, setSearchValue] = useState<string>('')
     const items = useSelector((state: State) => state.searchBooks)
     const { handleSearchBook } = Dispatcher(useDispatch())
-    const { isLoogedIn  } = useSelector((state: State) => state)
+    const { isLoogedIn } = useSelector((state: State) => state)
     const navigate = useNavigate()
 
-
     const handleChange: React.ChangeEventHandler<HTMLInputElement> = function ({ target }) {
-        const {value} = target
+        const { value } = target
         setSearchValue(value)
     }
-    const handleKeySubmit: React.KeyboardEventHandler<HTMLInputElement> = function ({key}) {
+    const handleKeySubmit: React.KeyboardEventHandler<HTMLInputElement> = function ({ key }) {
         if (key == 'Enter') {
             handleSearchBook(searchValue)
         }
@@ -44,26 +41,32 @@ const FunctionPage: React.FC<Props> = ({ viewportHeight }) => {
             <div className="resultsContainer">
                 <div className="inputContainer">
                     <InputStyled>
-                        <input onKeyPress={handleKeySubmit} value={searchValue} onChange={handleChange} name="search" placeholder="Search by Author, Genre, year, title" />
+                        <input
+                            onKeyPress={handleKeySubmit}
+                            value={searchValue}
+                            onChange={handleChange}
+                            name="search"
+                            placeholder="Search by Author, Genre, year, title"
+                        />
                     </InputStyled>
                 </div>
                 <Title>All Results ({items.length})</Title>
 
                 <SubTitle>Sort by</SubTitle>
                 <div className="actionsContainer">
-                    <ButtonS onClick={() => setSelectedFilter('Filter')} showIcon={selectedFilter == 'Filter'}>
+                    <ButtonS onClick={setSelectedFilter} name={'Filter'} showIcon={selectedFilter == 'Filter'}>
                         Filter
                     </ButtonS>
-                    <ButtonS onClick={() => setSelectedFilter('Date')} showIcon={selectedFilter == 'Date'}>
+                    <ButtonS onClick={setSelectedFilter} name="Date" showIcon={selectedFilter == 'Date'}>
                         Date
                     </ButtonS>
-                    <ButtonS onClick={() => setSelectedFilter('Type')} showIcon={selectedFilter == 'Type'}>
+                    <ButtonS onClick={setSelectedFilter} name="Type" showIcon={selectedFilter == 'Type'}>
                         Type
                     </ButtonS>
-                    <ButtonS onClick={() => setSelectedFilter('Auther')} showIcon={selectedFilter == 'Auther'}>
+                    <ButtonS onClick={setSelectedFilter} name="Auther" showIcon={selectedFilter == 'Auther'}>
                         Auther
                     </ButtonS>
-                    <ButtonS onClick={() => setSelectedFilter('Category')} showIcon={selectedFilter == 'Category'}>
+                    <ButtonS onClick={setSelectedFilter} name="Category" showIcon={selectedFilter == 'Category'}>
                         Category
                     </ButtonS>
                 </div>

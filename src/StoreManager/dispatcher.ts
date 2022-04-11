@@ -13,7 +13,6 @@ const Dispatcher = function (dispatch: (dispatcher: Action) => void) {
 
     const handleSearchBook = async function (key:string) {
         const searchBooks = await apiManager.searchBooks(key)
-        console.log(searchBooks);
         const action: Action = { type: SEARCH_BOOKS, payload: { searchBooks } }
         dispatch(action)
     }

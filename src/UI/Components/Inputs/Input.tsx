@@ -13,10 +13,6 @@ type Props = {
 
 const Input: React.FC<Props> = (props) => {
     const { placeholder, type, error, touched,value,name,onChange} = props
-useEffect(()=>{
-    console.log(error);
-    
-},[error,touched])
     return (
         <InputStyled invalid={!!(error && touched)}>
             <Field

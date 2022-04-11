@@ -1,7 +1,5 @@
 import colors from '../../Theme/Colors'
 import styled from 'styled-components'
-import React from 'react'
-
 
 const SubTitleStyle = styled.div`
 
