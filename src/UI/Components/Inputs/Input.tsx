@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import InputStyled from './InputStyled'
-import { useField, Field } from 'formik'
+import { Field } from 'formik'
 type Props = {
     value?: string | number | readonly string[] | undefined
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
@@ -22,7 +22,7 @@ const Input: React.FC<Props> = (props) => {
                 onChange={onChange}
                 placeholder={placeholder}
             />
-            {error && touched && <div className="errorMsg">{error}</div>}
+            {error && touched && <div role={"dialog"} className="errorMsg">{error}</div>}
         </InputStyled>
     )
 }

@@ -20,7 +20,7 @@ const FunctionPage: React.FC<Props> = ({ viewportHeight }) => {
     const { handleSearchBook } = Dispatcher(useDispatch())
     const { isLoogedIn } = useSelector((state: State) => state)
     const navigate = useNavigate()
-
+    const filters = ['Filter', 'Date', 'Type', 'Auther', 'Category']
     const handleChange: React.ChangeEventHandler<HTMLInputElement> = function ({ target }) {
         const { value } = target
         setSearchValue(value)
@@ -54,21 +54,15 @@ const FunctionPage: React.FC<Props> = ({ viewportHeight }) => {
 
                 <SubTitle>Sort by</SubTitle>
                 <div className="actionsContainer">
-                    <ButtonS onClick={setSelectedFilter} name={'Filter'} showIcon={selectedFilter == 'Filter'}>
-                        Filter
-                    </ButtonS>
-                    <ButtonS onClick={setSelectedFilter} name="Date" showIcon={selectedFilter == 'Date'}>
-                        Date
-                    </ButtonS>
-                    <ButtonS onClick={setSelectedFilter} name="Type" showIcon={selectedFilter == 'Type'}>
-                        Type
-                    </ButtonS>
-                    <ButtonS onClick={setSelectedFilter} name="Auther" showIcon={selectedFilter == 'Auther'}>
-                        Auther
-                    </ButtonS>
-                    <ButtonS onClick={setSelectedFilter} name="Category" showIcon={selectedFilter == 'Category'}>
-                        Category
-                    </ButtonS>
+                    {filters.map((filter, i) => (
+                        <ButtonS
+                            key={i}
+                            onClick={setSelectedFilter}
+                            name={filter}
+                            showIcon={selectedFilter == filter}
+                        />
+                    ))}
+                    
                 </div>
             </div>
             <div className="cardsContainer">

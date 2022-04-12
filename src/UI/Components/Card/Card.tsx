@@ -17,7 +17,7 @@ const Card: React.FC<Props> = ({ item, width, height, onClick, className }) => {
     return (
         <CardStyled role={'grid'} width={width} height={height} onClick={onClick} className={className}>
             <div role={'gridcell'} className="img">
-                {img ? <img src={img} /> : null}
+                {img && <img src={img} />}
             </div>
             <div role={'gridcell'} className="contentContainer">
                 <div className="titleContainer">{width ? <SubTitle>{title}</SubTitle> : <Title>{title}</Title>}</div>

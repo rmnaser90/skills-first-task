@@ -8,8 +8,10 @@ type Props = {
     disabled?: boolean
 }
 const RightArrowButton: React.FC<Props> = ({ onClick, disabled }) => {
+    const handleClick = disabled? ()=>({}):onClick
+
     return (
-        <LeftArrowStyled role={"button"} disabled={disabled} onClick={disabled ? () => console.log('disabled') : onClick}>
+        <LeftArrowStyled role={"button"} disabled={disabled} onClick={handleClick}>
             <FontAwesomeIcon icon={faAngleRight} />
         </LeftArrowStyled>
     )

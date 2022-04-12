@@ -10,12 +10,12 @@ describe('left arrow testing', () => {
         expect(divElement).toBeInTheDocument()
     })
     it('should have the color grey when disabled', () => {
-        render(<LeftArrowButton onClick={handleClick} disabled={true}/>)
+        render(<LeftArrowButton onClick={handleClick} disabled/>)
         const divElement = screen.getByRole('button')
         expect(divElement).toHaveStyle('color:grey')
     })
     it('should have cursor set to auto when disabled', () => {
-        render(<LeftArrowButton onClick={handleClick} disabled={true}/>)
+        render(<LeftArrowButton onClick={handleClick} disabled/>)
         const divElement = screen.getByRole('button')
         expect(divElement).toHaveStyle('cursor:auto')
     })

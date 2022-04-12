@@ -4,7 +4,6 @@ import ButtonStyled from './ButtonStyled'
 type Props = {
     name: string
     onClick: (name: string) => void
-    children?: string
     showIcon?: boolean
 }
 const ButtonS: React.FC<Props> = ({ children, showIcon, onClick, name }) => {
@@ -12,8 +11,8 @@ const ButtonS: React.FC<Props> = ({ children, showIcon, onClick, name }) => {
 
     return (
         <ButtonStyled onClick={setFilter} showIcon={showIcon}>
-            {showIcon ? <div className="icon" role={'img'} /> : null}
-            {children}
+            {showIcon && <div className="icon" role={'img'} /> }
+            {name}
         </ButtonStyled>
     )
 }

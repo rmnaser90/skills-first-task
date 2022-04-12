@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import LeftArrowStyled from './LeftArrowStyled'
@@ -7,8 +7,10 @@ type Props = {
     disabled?: boolean
 }
 const LeftArrowButton: React.FC<Props> = ({ onClick, disabled }) => {
+ 
+    const handleClick = disabled? ()=>({}):onClick
     return (
-        <LeftArrowStyled role={"button"} disabled={disabled} onClick={disabled ? () => console.log('disabled') : onClick}>
+        <LeftArrowStyled role={'button'} disabled={disabled} onClick={handleClick}>
             <FontAwesomeIcon icon={faAngleLeft} />
         </LeftArrowStyled>
     )

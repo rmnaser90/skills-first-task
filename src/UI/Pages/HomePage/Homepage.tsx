@@ -8,24 +8,27 @@ import Card from '../../Components/Card/Card'
 import FeatureCard from '../../Components/FeatureCard/FeatureCard'
 import Paragraph from '../../Components/Paragraph/Paragraph'
 import { useNavigate } from 'react-router-dom'
-import {  State } from '../../../Types/Types'
+import { State } from '../../../Types/Types'
 import { useSelector } from 'react-redux'
 import Carousel from '../../Components/Carousel/Carousel'
+import { useMediaQuery } from 'react-responsive'
 type Props = {
     viewportHeight: number
     viewportWidth: number
 }
 
-const Homepage: React.FC<Props> = ({ viewportHeight,viewportWidth }) => {
+const Homepage: React.FC<Props> = ({ viewportHeight, viewportWidth }) => {
     const navigate = useNavigate()
-    const items = useSelector((state: State) => state.books)
-    const isLoggedIn = useSelector((state: State) => state.isLoogedIn)
-    const { fullName } = useSelector((state: State) => state.user)
+    const {
+        books,
+        isLoogedIn: isLoggedIn,
+        user: { fullName }
+    } = useSelector((state: State) => state)
 
     const getStarted = function () {
         navigate(isLoggedIn ? 'function' : 'signup')
     }
-
+    const isDesktop = useMediaQuery({ minWidth: 768 })
     return (
         <HomePageStyled viewportHeight={viewportHeight}>
             <TopNab />
@@ -43,17 +46,14 @@ const Homepage: React.FC<Props> = ({ viewportHeight,viewportWidth }) => {
                         </div>
                     </div>
                     <div className="imgContainer">
-                        <CircleFrame
-                            width={viewportWidth > 768 ? '474px' : '256px'}
-                            height={viewportWidth > 768 ? '474px' : '256px'}
-                        />
+                        <CircleFrame width={isDesktop ? '474px' : '256px'} height={isDesktop ? '474px' : '256px'} />
                     </div>
                 </div>
                 <div className="inspirationContainer">
                     <Title>This week inspiration</Title>
                     <Carousel>
-                        {items &&
-                            items.map((item, i) => (
+                        {books &&
+                            books.map((item, i) => (
                                 <Card
                                     item={item}
                                     key={i}

@@ -6,7 +6,7 @@ const apiManager = new APIManager()
 
 const Dispatcher = function (dispatch: (dispatcher: Action) => void) {
     const getBooks = async function () {
-        const books = await apiManager.getBooks()
+        const books = await apiManager.getBooks({q:"rich dad",maxResults:40})
         const action: Action = { type: GET_BOOKS, payload: { books } }
         dispatch(action)
     }

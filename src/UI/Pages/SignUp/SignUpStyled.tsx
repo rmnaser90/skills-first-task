@@ -4,6 +4,8 @@ const SignUpStyled = styled.div`
     position: absolute;
     top: 0px;
     width: 100%;
+    z-index: 999;
+
     & .signUpForm {
         width: 87.2%;
         padding-left: 6.4%;

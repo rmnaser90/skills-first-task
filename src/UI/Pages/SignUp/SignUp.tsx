@@ -13,6 +13,7 @@ import { State } from '../../../Types/Types'
 import { useDispatch, useSelector } from 'react-redux'
 import Dispatcher from '../../../StoreManager/dispatcher'
 import { validate } from './ValidationSchema'
+
 const SignUp: React.FC = () => {
     const navigate = useNavigate()
     const { isLoogedIn, forms } = useSelector((state: State) => state)

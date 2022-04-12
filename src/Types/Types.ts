@@ -4,8 +4,6 @@ export type Book = {
     img?: string
 }
 
-
-
 export interface SignUpForm {
     fullName?: string
     email?: string
@@ -23,7 +21,7 @@ export interface State {
     }
     isLoogedIn: boolean
     books: Book[]
-    searchBooks:Book[]
+    searchBooks: Book[]
     forms: {
         login: {
             email?: string
@@ -46,7 +44,7 @@ export interface Payload {
     user?: User
     isLoogedIn?: boolean
     books?: Book[]
-    searchBooks?:Book[]
+    searchBooks?: Book[]
     inputHandler?: {
         form: 'login' | 'signUp'
         property: 'email' | 'password' | 'fullName' | 'confirmPassword'
@@ -54,7 +52,7 @@ export interface Payload {
     }
 }
 export type Action = {
-    type: 'login' | 'logout' | 'getbooks' | 'inputHandler' | 'autoLogin'| 'search'
+    type: 'login' | 'logout' | 'getbooks' | 'inputHandler' | 'autoLogin' | 'search'
     payload: Payload
 }
 export type ApiBook = {
@@ -65,4 +63,26 @@ export type ApiBook = {
             thumbnail: string
         }
     }
+}
+
+export type Params = {
+    q: string
+    maxResults?: number
+    startIndex?: number
+
+}
+
+export type Query = {
+    [key:string]:string
+}
+
+export type BookQuery = {
+    keyword: string
+    intitle?: string
+    inauther?: string
+    inpublisher?: string
+    subject?: string
+    isbn?: string
+    lccn?: string
+    pclc?: string
 }
