@@ -11,7 +11,7 @@ const ButtonS: React.FC<Props> = ({ children, showIcon, onClick, name }) => {
 
     return (
         <ButtonStyled onClick={setFilter} showIcon={showIcon}>
-            {showIcon && <div className="icon" role={'img'} /> }
+            {showIcon && <div className="iconss" role={'img'} /> }
             {name}
         </ButtonStyled>
     )
