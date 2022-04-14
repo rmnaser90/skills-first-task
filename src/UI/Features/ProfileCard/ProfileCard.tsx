@@ -12,20 +12,20 @@ const ProfileCard: React.FC = () => {
     const hideProfileCard = () => setShouldDisplay(false)
 
     return (
-        <ProfileCardStyled onMouseLeave={hideProfileCard} shouldDisplay={shouldDisplay} >
+        <ProfileCardStyled onMouseLeave={hideProfileCard} shouldDisplay={shouldDisplay}>
             <div className="mainContainer">
-            <div className="detailsContainer" onClick={showProfileCard}>
-                <Avatar name={user.fullName || ''} diameter={shouldDisplay ? '120px' : '60px'} />
-                {shouldDisplay && <h2>{user.fullName}</h2>}
-            </div>
-            {shouldDisplay && (
-                <div className="actionsContainer">
-                    <div className="btn">My Account</div>
-                    <div className="btn" onClick={signOut}>
-                        LogOut
-                    </div>
+                <div data-testid="detailsContainer" className="detailsContainer" onClick={showProfileCard}>
+                    <Avatar name={user.fullName || ''} diameter={shouldDisplay ? '120px' : '60px'} />
+                    {shouldDisplay && <h2>{user.fullName}</h2>}
                 </div>
-            )}
+                {shouldDisplay && (
+                    <div data-testid="actionsContainer" className="actionsContainer">
+                        <div className="btn">My Account</div>
+                        <div className="btn" onClick={signOut}>
+                            LogOut
+                        </div>
+                    </div>
+                )}
             </div>
         </ProfileCardStyled>
     )
