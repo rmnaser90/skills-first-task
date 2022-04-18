@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig } from 'axios'
 import { Book, ApiBook, Params, BookQuery, Query } from '../Types/Types'
 
 const user = {
-    fullName: 'Rami Naser Aldin',
+    fullName: 'Albert Einstein',
     email: 'rami@moday.com',
     books: [],
     err: false,

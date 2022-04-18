@@ -8,12 +8,15 @@ import { Provider } from 'react-redux'
 const MockStateLoggedOut = { isLoogedIn: false }
 const MockStateLoggedIn = { isLoogedIn: true, user: { fullName: 'Albert Einstein' } }
 
-const renderWithReduxProvider = (component = <Header />, initialState = MockStateLoggedOut) => {
-    const reducer = () => initialState
-    const MockStore = createStore(reducer)
-    render(<Provider store={MockStore}>{component}</Provider>)
+const renderWithReduxProvider = (
+    component = <Header />,
+     initialState = MockStateLoggedOut ) => {
+                const reducer = () => initialState
+                const MockStore = createStore(reducer)
+                render(<Provider store={MockStore}>{component}</Provider>)
 }
-describe('Avatar', () => {
+
+describe('Header testing', () => {
     it('should not render Avatar when logged out', () => {
         renderWithReduxProvider(<Header />, MockStateLoggedOut)
         const divElement = screen.queryByText('AE')
@@ -32,9 +35,10 @@ describe('Avatar', () => {
     it('should render profile card when clicked on the avatar', () => {
         renderWithReduxProvider(<Header />, MockStateLoggedIn)
         const avatarContainer = screen.getByTestId('detailsContainer')
-        fireEvent.click(avatarContainer)        
+        fireEvent.click(avatarContainer)
         const divElement = screen.getByTestId('actionsContainer')
         expect(divElement).toBeInTheDocument()
     })
-
 })
+
+

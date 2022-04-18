@@ -10,7 +10,7 @@ const LeftArrowButton: React.FC<Props> = ({ onClick, disabled }) => {
  
     const handleClick = disabled? ()=>({}):onClick
     return (
-        <LeftArrowStyled role={'button'} disabled={disabled} onClick={handleClick}>
+        <LeftArrowStyled role={'button'} data-testid="leftArrowBtn" disabled={disabled} onClick={handleClick}>
             <FontAwesomeIcon icon={faAngleLeft} />
         </LeftArrowStyled>
     )

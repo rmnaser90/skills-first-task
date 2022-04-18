@@ -15,12 +15,12 @@ describe('Avatar', () => {
         expect(divElement).toHaveStyle('width:50px')
     })
 
-    it('should have className avatar have width equal to diameter prop', () => {
+    it('should have width equal to the passed diameter prop', () => {
         render(<Avatar name="albert einstein" diameter="100px" />)
         const divElement = screen.getByText('AE')
         expect(divElement).toHaveStyle('width:100px')
     })
-    it('should have className avatar have widequal to diameter prop', () => {
+    it('should have the passed name initals as text', () => {
         render(<Avatar name="albert einstein" diameter="100px" />)
         const divElement = screen.getByText('AE')
         expect(divElement).toHaveClass('avatar')

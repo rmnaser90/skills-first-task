@@ -23,7 +23,7 @@ const Carousel: React.FC<Props> = ({ className, children }) => {
         <CarouselStyled className={className}>
             <div className="itemsContainer">
                 {childrenArr.map((child, i) => (
-                    <CarouselItem key={i} shouldShow={currentItem == i}>
+                    <CarouselItem key={i} testId={"carouselItem"+i} shouldShow={currentItem == i}>
                         {child}
                     </CarouselItem>
                 ))}
