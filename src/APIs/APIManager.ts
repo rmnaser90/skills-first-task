@@ -1,13 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios'
-import { Book, ApiBook, Params, SignUpForm } from '../Types/Types'
+import { Params, SignUpForm } from '../Types/Types'
 
-const user = {
-    fullName: 'Albert Einstein',
-    email: 'rami@moday.com',
-    books: [],
-    err: false,
-    msg: ''
-}
 interface AxiosConfig extends AxiosRequestConfig {
     headers: {
         userid: string
