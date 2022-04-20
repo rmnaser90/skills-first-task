@@ -11,14 +11,19 @@ export interface SignUpForm {
     confirmPassword?: string
     agreed?: number | string
 }
+export interface User{
+    readonly id?: number;
+    fullName?: string;
+    email?: string;
+    password?: string;
+    isLoggedIn?: boolean;
+    agreed?: boolean;
+    books?: Book[]
+    createdAt?: Date;
+    updatedAt?: Date;
+}
 export interface State {
-    user: {
-        fullName?: string
-        email?: string
-        books?: Book[]
-        err?: boolean
-        msg?: string
-    }
+    user: User
     isLoogedIn: boolean
     books: Book[]
     searchBooks: Book[]
@@ -31,13 +36,6 @@ export interface State {
         }
         signUp: SignUpForm
     }
-}
-export interface User {
-    fullName?: string
-    email?: string
-    books?: Book[]
-    err?: boolean
-    msg?: string
 }
 
 export interface Payload {
