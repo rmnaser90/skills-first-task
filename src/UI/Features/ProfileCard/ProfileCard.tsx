@@ -15,7 +15,7 @@ const ProfileCard: React.FC = () => {
         <ProfileCardStyled onMouseLeave={hideProfileCard} shouldDisplay={shouldDisplay}>
             <div className="mainContainer">
                 <div data-testid="detailsContainer" className="detailsContainer" onClick={showProfileCard}>
-                    <Avatar name={user.fullName || ''} diameter={shouldDisplay ? '120px' : '60px'} />
+                    <Avatar name={user.fullName || ''} diameter={shouldDisplay ? '120px' : '50px'} />
                     {shouldDisplay && <h2>{user.fullName}</h2>}
                 </div>
                 {shouldDisplay && (

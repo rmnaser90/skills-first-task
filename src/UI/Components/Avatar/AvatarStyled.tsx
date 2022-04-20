@@ -7,7 +7,7 @@ const AvatarStyled = styled.p<{diameter:string}>`
     display: grid;
     align-items: center;
     justify-items: center;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 600;
     margin: 0px;
     background-color: ${colors.default};

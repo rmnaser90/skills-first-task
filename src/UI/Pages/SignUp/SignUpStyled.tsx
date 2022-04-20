@@ -53,7 +53,7 @@ const SignUpStyled = styled.div`
         cursor: pointer;
     }
     & .buttonContainer {
-        width: 222px;
+        width: 242px;
         display: grid;
         align-items: center;
         justify-items: center;

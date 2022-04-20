@@ -5,7 +5,9 @@ const ParagraphStyle = {
         color: colors.text.secondary,
         width: '100%',
         height: '100%',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        fontSize:"16px",
+        fontWeight:400
     } as React.CSSProperties
 }
 

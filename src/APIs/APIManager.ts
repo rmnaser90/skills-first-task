@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios'
-import { Book, ApiBook, Params, BookQuery, Query } from '../Types/Types'
+import { Book, ApiBook, Params} from '../Types/Types'
 
 const user = {
     fullName: 'Albert Einstein',
