@@ -1,7 +1,15 @@
 export type Book = {
-    title?: string
-    text?: string
-    img?: string
+    title?: string;
+    subtitle?: string;
+    text?: string;
+    img?: string;
+    publishedDate?: string;
+    previewLink?: string;
+    isbn10?: string | number;
+    isbn13?: string | number;
+    googleId?: string | number;
+    category?:string;
+    author?:string
 }
 
 export interface SignUpForm {
@@ -15,12 +23,7 @@ export interface User{
     readonly id?: number;
     fullName?: string;
     email?: string;
-    password?: string;
-    isLoggedIn?: boolean;
-    agreed?: boolean;
     books?: Book[]
-    createdAt?: Date;
-    updatedAt?: Date;
 }
 export interface State {
     user: User
@@ -83,4 +86,10 @@ export type BookQuery = {
     isbn?: string
     lccn?: string
     pclc?: string
+}
+export   interface ContactUsForm {
+    fullName?:string,
+    email?:string,
+    message?:string,
+    q?:string
 }
