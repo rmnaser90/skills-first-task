@@ -10,13 +10,12 @@ import SignUpHeader from '../../Features/SignUpHeader/SignUpHeader'
 import SignUpStyled from './ContactUsStyled'
 import { ContactUsForm } from '../../../Types/Types'
 import { validate } from './ValidationSchema'
-
+import apiManager from '../../../APIs/APIManager'
 const ContactUs: React.FC = () => {
     const navigate = useNavigate()
-    const onSubmit = (values: ContactUsForm) => {
-        console.log(values)
+    const onSubmit = async (values: ContactUsForm) => {
+            await apiManager.contactUs(values)
         navigate('/')
-        // send to server
     }
     const initialValues: ContactUsForm = {
         fullName: '',

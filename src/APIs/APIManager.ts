@@ -1,5 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios'
-import { Params, SignUpForm } from '../Types/Types'
+import { escapeRegExp } from 'cypress/types/lodash'
+import { ContactUsForm, Params, SignUpForm } from '../Types/Types'
 
 interface AxiosConfig extends AxiosRequestConfig {
     headers: {
@@ -50,30 +51,25 @@ class APIManager {
         try {
             const { data } = await axios('user/signOut', { ...this.config, method: 'PUT' })
             this.config.headers.userid = ''
-            console.log(data);
-            
+            console.log(data)
         } catch (error) {
-            console.log(error);
-            
+            console.log(error)
         }
     }
-    async signUp(signUpForm:SignUpForm){
+    async signUp(signUpForm: SignUpForm) {
         try {
-            
-            const {data} = await axios('user/signUp', {...this.config,method:'POST',data:signUpForm})
-            const {err,user} = data
+            const { data } = await axios('user/signUp', { ...this.config, method: 'POST', data: signUpForm })
+            const { err, user } = data
             if (user && !err) {
                 this.config.headers.userid = user.id
                 return user
             }
-        } catch (error) {
-            
-        }
+        } catch (error) {}
     }
-    async authUser(userId:string){
+    async authUser(userId: string) {
         try {
             this.config.headers.userid = userId
-            const { data } = await axios('user/authenticateUser', this.config)            
+            const { data } = await axios('user/authenticateUser', this.config)
             const { user, err } = data
             if (user && !err) {
                 this.config.headers.userid = user.id
@@ -82,7 +78,15 @@ class APIManager {
         } catch (error) {
             console.log(error)
         }
+    }
 
+    async contactUs(message: ContactUsForm) {
+        try {
+            const res = await axios({ ...this.config, method: 'POST', data: message })
+            return res.data
+        } catch (error) {
+            alert("something went wrong")
+        }
     }
 }
 const apiManager = new APIManager()
