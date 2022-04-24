@@ -9,6 +9,7 @@ import Homepage from './UI/Pages/HomePage/Homepage'
 import SignIn from './UI/Pages/SignIn/SignIn'
 import SignUp from './UI/Pages/SignUp/SignUp'
 import Dispatcher from './StoreManager/dispatcher'
+import ContactUs from './UI/Pages/ContactUs/ContactUs'
 
 const App: React.FC = function () {
     const [viewportHeight, setViewportHeight] = useState(window.innerHeight)
@@ -32,6 +33,7 @@ const App: React.FC = function () {
                     <Route index element={<Homepage viewportWidth={viewportWidth} viewportHeight={viewportHeight} />} />
                     <Route path="signin" element={<SignIn />} />
                     <Route path="signup" element={<SignUp />} />
+                    <Route path="contactus" element={<ContactUs />} />
                     <Route path="function/" element={<FunctionPage viewportHeight={viewportHeight} />} />
                 </Routes>
             </BrowserRouter>
