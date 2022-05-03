@@ -35,8 +35,8 @@ const Homepage: React.FC<Props> = ({ viewportHeight }) => {
 
     const handleGetRecommendedBooks = async function () {
         if (isLoading) return
-        console.log("called");
-        
+        console.log('called')
+
         setIsLoading(true)
         const tags = getRecomendations(user)
         const books = await getRecommendedBooks(tags)
@@ -69,7 +69,7 @@ const Homepage: React.FC<Props> = ({ viewportHeight }) => {
                             {isLoggedIn ? 'Welcome back ' + fullName : 'All your books in one place '}
                         </Title>
                         <div className="actionContainer">
-                            <ButtonP onClick={getStarted}>{isLoggedIn? 'Let\'s explore books':'Get started'}</ButtonP>
+                            <ButtonP onClick={getStarted}>{isLoggedIn ? "Let's explore books" : 'Get started'}</ButtonP>
                         </div>
                     </div>
                     <div className="imgContainer">
@@ -82,14 +82,16 @@ const Homepage: React.FC<Props> = ({ viewportHeight }) => {
                     books={books}
                     title="This week's inspiration"
                 />
-                {isLoggedIn && (
+                {isLoggedIn && user.books &&(
                     <>
-                        <BooksCarousel
-                            showAddBtn={isLoggedIn}
-                            className="inspirationContainer"
-                            books={user.books}
-                            title="My Book Shelf"
-                        />
+                        {user.books.length > 0 && (
+                            <BooksCarousel
+                                showAddBtn={isLoggedIn}
+                                className="inspirationContainer"
+                                books={user.books}
+                                title="My Book Shelf"
+                            />
+                        )}
                         <div className="recomendationSection">
                             <Title className="recommendedTitle">Recommended for you</Title>
                             <hr />
