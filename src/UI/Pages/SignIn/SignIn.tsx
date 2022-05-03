@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import ButtonP from '../../Components/ButtonP/ButtonP'
 import InputLabel from '../../Components/InpuLabel/InputLabel'
 import Input from '../../Components/Inputs/Input'
@@ -8,19 +8,24 @@ import SignUpHeader from '../../Features/SignUpHeader/SignUpHeader'
 import SignUpStyled from '../SignUp/SignUpStyled'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import {  State } from '../../../Types/Types'
+import { State } from '../../../Types/Types'
 import Dispatcher from '../../../StoreManager/dispatcher'
 import { Form, Formik } from 'formik'
 import { validate } from './ValidationSchema'
+import LoadingSpin from "react-loading-spin";
 
 const SignIn: React.FC = () => {
     const navigate = useNavigate()
     const { loginInputHandler, login } = Dispatcher(useDispatch())
     const signInForm = useSelector((state: State) => state.forms.login)
     const isLoggedIn = useSelector((state: State) => state.isLoogedIn)
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const submit = async function (values = signInForm) {
+        if (isLoading) return
+        setIsLoading(true)
         const res = await login(values)
+        setIsLoading(false)
         if (!res.err) {
             loginInputHandler('email', '')
             loginInputHandler('password', '')
@@ -37,6 +42,9 @@ const SignIn: React.FC = () => {
 
     return (
         <SignUpStyled>
+                {isLoading && <div className="loadingLayer" >
+                <LoadingSpin />
+                    </div>}
             <SignUpHeader />
             <div className="signUpForm">
                 <div className="formHeader">
@@ -47,12 +55,7 @@ const SignIn: React.FC = () => {
                         repudiandae inventore rem harum officiis. Aut!
                     </Paragraph>
                 </div>
-                <Formik
-                    initialValues={signInForm}
-                    onSubmit={submit}
-                    validationSchema={validate}
-                    validateOnBlur
-                >
+                <Formik initialValues={signInForm} onSubmit={submit} validationSchema={validate} validateOnBlur>
                     {({ handleSubmit, values, handleChange, touched, errors }) => (
                         <Form onKeyPress={(e) => e.key === 'Enter' && submit(values)}>
                             <div className="inputsContainer">
@@ -86,8 +89,7 @@ const SignIn: React.FC = () => {
                                     <ButtonP onClick={handleSubmit}>Sign in</ButtonP>
                                 </div>
                                 <div className="loginText">
-                                    I don&apos;t have an account{' '}
-                                    <strong onClick={navigateToSinUp}>Sign Up</strong>
+                                    I don&apos;t have an account <strong onClick={navigateToSinUp}>Sign Up</strong>
                                 </div>
                             </div>
                         </Form>

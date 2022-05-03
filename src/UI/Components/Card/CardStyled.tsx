@@ -24,9 +24,21 @@ const CardStyled = styled.div<Props>`
         display: grid;
         align-items: center;
         justify-items: center;
+        position: relative;
     }
     & img{
         height: ${({width})=>width?'110px':'190px'};
+    }
+    & .addBtn{
+        position: absolute;
+        right: 20px;
+        font-size: 150%;
+        transition: 0.4s;
+        cursor: pointer;
+    }
+    & .addBtn:hover{
+     
+        font-size: 200%;
     }
     & .contentContainer {
         width: 100%;

@@ -1,5 +1,4 @@
-import axios, { AxiosRequestConfig } from 'axios'
-import { escapeRegExp } from 'cypress/types/lodash'
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { ContactUsForm, Params, SignUpForm } from '../Types/Types'
 
 interface AxiosConfig extends AxiosRequestConfig {
@@ -16,6 +15,7 @@ class APIManager {
             method: 'GET'
         }
     }
+
     async getBooks(params?: Params) {
         try {
             const res = await axios('/search', { ...this.config, params })
@@ -26,22 +26,31 @@ class APIManager {
     }
 
     async searchBooks(key: string) {
-        const params: Params = {
-            q: key,
-            maxResults: 40
+        try {
+            
+            const params: Params = {
+                q: key,
+                maxResults: 40
+            }
+            const books = await this.getBooks(params)
+            return books
+        } catch (error) {
+            return []
         }
-        const books = await this.getBooks(params)
-        return books
     }
 
     async signInUser(signInForm: { email?: string; password?: string }) {
         try {
-            const { data } = await axios('user/signIn', { ...this.config, method: 'PUT', data: signInForm })
+            const response:AxiosResponse = await axios('user/signIn', { ...this.config, method: 'PUT', data: signInForm })
+                    const {data}= response
+                    console.log(response);
+                    
             const { user, err } = data
             if (user && !err) {
                 this.config.headers.userid = user.id
                 return user
             }
+            alert(data.msg)
         } catch (error) {
             console.log(error)
         }
@@ -56,6 +65,7 @@ class APIManager {
             console.log(error)
         }
     }
+
     async signUp(signUpForm: SignUpForm) {
         try {
             const { data } = await axios('user/signUp', { ...this.config, method: 'POST', data: signUpForm })
@@ -66,6 +76,7 @@ class APIManager {
             }
         } catch (error) {}
     }
+
     async authUser(userId: string) {
         try {
             this.config.headers.userid = userId
@@ -82,7 +93,29 @@ class APIManager {
 
     async contactUs(message: ContactUsForm) {
         try {
-            const res = await axios({ ...this.config, method: 'POST', data: message })
+            const res = await axios({ ...this.config,url:'customerSupport/contactUs', method: 'POST', data: message })
+            return res.data
+        } catch (error) {
+            alert("something went wrong")
+        }
+    }
+    async addBookToShelf(bookISBN:string){
+        console.log("trying to add from api manager");
+        
+        try {
+            console.log(
+                this.config.headers.userid
+            );
+            
+            const res = await axios({ ...this.config,url:'shelf/addToShelf/', method: 'POST', data: {bookISBN} })
+            return res.data
+        } catch (error) {
+            alert("something went wrong")
+        }
+    }
+    async removeFromBookShelf(bookISBN:string){
+        try {
+            const res = await axios({ ...this.config,url:'shelf/deleteUserBook/', method: 'DELETE', data: {bookISBN} })
             return res.data
         } catch (error) {
             alert("something went wrong")

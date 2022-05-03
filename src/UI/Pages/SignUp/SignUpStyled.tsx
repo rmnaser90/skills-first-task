@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import colors from '../../Theme/Colors'
 
 const SignUpStyled = styled.div`
     position: absolute;
@@ -61,6 +62,15 @@ const SignUpStyled = styled.div`
     }
     & .forgetPasswordText {
         margin-top: 20px;
+    }
+    
+    & .loadingLayer{
+        position: fixed;
+        z-index: 999;
+        background-color: ${colors.default};
+        opacity: 0.5;
+        width: 100vw;
+        height: 100vh;
     }
 
     @media only screen and (min-width: 768px) {

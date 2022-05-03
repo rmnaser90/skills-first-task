@@ -3,7 +3,7 @@ import { BookQuery } from '../../../Types/Types'
 
 const mockQuery: BookQuery = {
     keyword: 'future',
-    inauther: 'michio',
+    inauthor: 'michio',
     intitle: 'mind'
 }
 const mockQueryWithKeywordOnly: BookQuery = {

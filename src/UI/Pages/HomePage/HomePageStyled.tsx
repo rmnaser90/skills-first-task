@@ -27,13 +27,23 @@ const HomePageStyled = styled.div<Props>`
         padding-left: 20px;
         padding-top: 7.5vh;
     }
+    & .recomendationSection{
+        margin: 50px;
+        margin-bottom: 100px;
+    }
+    & .recommendedTitle{
+        width: 100%;
+        text-align: center;
+        margin-bottom: 50px;
+        margin-top: 70px;
+    }
     & .inspirationContainer {
-        background-color: ${colors.primary};
+        background-color: white;
         width: 93.6%;
         padding-left: 6.4%;
-        height: 451px;
+        height: 500px;
         display: grid;
-        grid-template-rows: 1fr 4fr ;
+        grid-template-rows: 1.5fr 4fr ;
         align-items: center;
         overflow-y: hidden;
     }
@@ -102,6 +112,10 @@ const HomePageStyled = styled.div<Props>`
             margin: 0px;
             padding: 0px;
         }
+        & .inspirationContainer {
+            height: 600px;
+        }
+
         & .featuresHeader{
             width: 50%;
         }

@@ -10,31 +10,33 @@ import { State } from '../../../Types/Types'
 import InputStyled from '../../Components/Inputs/InputStyled'
 import Dispatcher from '../../../StoreManager/dispatcher'
 import { useNavigate } from 'react-router-dom'
+import BookContainer from '../../Components/Book/BookContainer'
+import CardSkeleton from '../../Components/CardSkeleton/CardSkeleton'
 type Props = {
     viewportHeight: number
 }
 const FunctionPage: React.FC<Props> = ({ viewportHeight }) => {
     const [selectedFilter, setSelectedFilter] = useState<string>('Filter')
+    const [isLoading, setIsLoading] = useState<boolean>(false)
     const [searchValue, setSearchValue] = useState<string>('')
-    const items = useSelector((state: State) => state.searchBooks)
+    const searchBooks = useSelector((state: State) => state.searchBooks)
+    const books = useSelector((state: State) => state.books)
+    const items = searchBooks.length == 0 ? books : searchBooks
     const { handleSearchBook } = Dispatcher(useDispatch())
     const { isLoogedIn } = useSelector((state: State) => state)
-    const navigate = useNavigate()
     const filters = ['Filter', 'Date', 'Type', 'Auther', 'Category']
     const handleChange: React.ChangeEventHandler<HTMLInputElement> = function ({ target }) {
         const { value } = target
         setSearchValue(value)
     }
-    const handleKeySubmit: React.KeyboardEventHandler<HTMLInputElement> = function ({ key }) {
-        if (key == 'Enter') {
-            handleSearchBook(searchValue)
+    const handleKeySubmit: React.KeyboardEventHandler<HTMLInputElement> = async function ({ key }) {
+        if (key == 'Enter'&& !isLoading) {
+            setIsLoading(true)
+            await handleSearchBook(searchValue)
+            setIsLoading(false)
         }
     }
-    useEffect(() => {
-        if (!isLoogedIn) {
-            navigate('/')
-        }
-    }, [isLoogedIn])
+
     return (
         <FunctionPageStyled viewportHeight={viewportHeight}>
             <HeaderSection />
@@ -62,11 +64,31 @@ const FunctionPage: React.FC<Props> = ({ viewportHeight }) => {
                             showIcon={selectedFilter == filter}
                         />
                     ))}
-                    
                 </div>
             </div>
             <div className="cardsContainer">
-                {items && items.map((item, i) => <Card key={i} item={item} className="cardContainer" />)}
+                {isLoading ? (
+                    <>
+                        <CardSkeleton />
+                        <CardSkeleton />
+                        <CardSkeleton />
+                        <CardSkeleton />
+                        <CardSkeleton />
+                        <CardSkeleton />
+                        <CardSkeleton />
+                    </>
+                ) : searchBooks.length !== 0 ? (
+                    items.map((item, i) => (
+                        <BookContainer key={i} item={item} showAddBtn={isLoogedIn} className="cardContainer" />
+                    ))
+                ) : (
+                    <>
+                        <div className="noResults"> No results were found!</div>
+                        {items.map((item, i) => (
+                            <BookContainer key={i} item={item} showAddBtn={isLoogedIn} className="cardContainer" />
+                        ))}
+                    </>
+                )}
             </div>
         </FunctionPageStyled>
     )

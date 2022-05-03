@@ -10,15 +10,15 @@ const HomePageStyled = styled.div<Props>`
         margin-left: 6.4vw;
         margin-top: 20px;
         display: grid;
-        grid-template-rows: repeat(4,1fr);
+        grid-template-rows: repeat(4, 1fr);
         align-items: center;
     }
-    & .inputContainer{
+    & .inputContainer {
         margin-right: 6.4vw;
         margin-top: 10px;
-        margin-bottom:10px ;
+        margin-bottom: 10px;
     }
-    & .inputContainer input{
+    & .inputContainer input {
         text-align: center;
     }
 
@@ -33,7 +33,27 @@ const HomePageStyled = styled.div<Props>`
         margin-top: 50px;
         display: flex;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
         row-gap: 20px;
+    }
+    & .cardContainer {
+        max-width: 300px;
+        overflow-x: hidden;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+    }
+    & .noResults{
+        width: 100%;
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        font-size: 150%;
+        color: grey;
+        margin-bottom: 50px;
     }
 
     @media only screen and (min-width: 768px) {
@@ -49,8 +69,12 @@ const HomePageStyled = styled.div<Props>`
         & .cardContainer {
             width: 286px;
             height: 400px;
-            background-color: red;
             margin: 0px;
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            justify-items: center;
+            overflow-x: hidden;
         }
     }
 `

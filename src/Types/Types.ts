@@ -80,7 +80,7 @@ export type Query = {
 export type BookQuery = {
     keyword: string
     intitle?: string
-    inauther?: string
+    inauthor?: string
     inpublisher?: string
     subject?: string
     isbn?: string

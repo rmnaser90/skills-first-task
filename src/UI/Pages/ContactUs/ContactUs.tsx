@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Form, Formik } from 'formik'
 import ButtonP from '../../Components/ButtonP/ButtonP'
@@ -13,8 +13,12 @@ import { validate } from './ValidationSchema'
 import apiManager from '../../../APIs/APIManager'
 const ContactUs: React.FC = () => {
     const navigate = useNavigate()
+    const [isLoading, setIsLoading] = useState<boolean>(false)
     const onSubmit = async (values: ContactUsForm) => {
-            await apiManager.contactUs(values)
+        if (isLoading) return
+        setIsLoading(true)
+        await apiManager.contactUs(values)
+        setIsLoading(false)
         navigate('/')
     }
     const initialValues: ContactUsForm = {
@@ -26,6 +30,7 @@ const ContactUs: React.FC = () => {
 
     return (
         <SignUpStyled>
+            {isLoading && <div className="loadingLayer" />}
             <SignUpHeader />
             <div className="contactUsForm">
                 <div className="formHeader">
@@ -66,7 +71,7 @@ const ContactUs: React.FC = () => {
                                 <div className="inputContainer">
                                     <InputLabel text="Book title" />
                                     <Input
-                                        value={values.email}
+                                        value={values.q}
                                         name="q"
                                         type="text"
                                         placeholder="Book title"

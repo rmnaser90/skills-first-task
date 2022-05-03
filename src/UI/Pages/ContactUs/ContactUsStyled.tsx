@@ -1,10 +1,18 @@
 import styled from 'styled-components'
-
+import colors from '../../Theme/Colors'
 const SignUpStyled = styled.div`
     position: absolute;
     top: 0px;
     width: 100%;
     z-index: 999;
+    & .loadingLayer {
+        position: fixed;
+        z-index: 999;
+        background-color: ${colors.default};
+        opacity: 0.5;
+        width: 100vw;
+        height: 100vh;
+    }
 
     & .contactUsForm {
         width: 87.2%;
@@ -62,7 +70,7 @@ const SignUpStyled = styled.div`
     & .forgetPasswordText {
         margin-top: 20px;
     }
-    & .messageInput{
+    & .messageInput {
         width: 100%;
         height: 130px;
         font-family: Roboto;
@@ -90,7 +98,7 @@ const SignUpStyled = styled.div`
         & .actionsContainer {
             align-items: flex-start;
         }
-        & .buttonContainer{
+        & .buttonContainer {
             align-self: flex-start;
         }
     }

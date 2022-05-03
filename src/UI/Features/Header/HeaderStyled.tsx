@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import colors from '../../Theme/Colors'
 
 const HeaderStyled = styled.div`
-    background-color: ${colors.secondary};
+    background-color: ${colors.primary};
     height: 72px;
     width: 86.4vw;
     display: grid;
@@ -17,12 +17,22 @@ const HeaderStyled = styled.div`
         justify-self: flex-end;
     }
     & .logo {
-        width: 76px;
-        height: 36px;
-        background-color: ${colors.primary};
+        width: 80px;
+        height: 40px;
+        border-radius: 5px;
+        font-size: large;
+        background-color: ${colors.secondary};
+        color: ${colors.text.secondary};
+        font-weight: 700;
         display: grid;
         align-items: center;
         justify-items: center;
+        cursor: pointer;
+    }
+    & .logoText{
+        text-decoration: none;
+        color: ${colors.text.secondary};
+
     }
 `
 export default HeaderStyled

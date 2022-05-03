@@ -41,8 +41,14 @@ const ProfileCardStyled = styled.div<{ shouldDisplay: boolean }>`
         justify-items: center;
     }
     & .btn {
+        color: ${colors.text.secondary};
         cursor: pointer;
     }
+    & .btn a{
+        text-decoration: none;
+        color: ${colors.text.secondary};
+    }
+    
     @media only screen and (max-width: 767px) {
         & .mainContainer {
             top: ${({ shouldDisplay }) => (shouldDisplay ? '10' : '0')};

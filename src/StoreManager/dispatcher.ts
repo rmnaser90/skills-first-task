@@ -5,8 +5,14 @@ import { GET_BOOKS, INPUT_HANDLER, LOGIN, LOGOUT, SEARCH_BOOKS } from './actions
 const Dispatcher = function (dispatch: (dispatcher: Action) => void) {
     const getBooks = async function () {
         const books = await apiManager.getBooks({ q: 'rich dad', maxResults: 40 })
-        const action: Action = { type: GET_BOOKS, payload: { books } }
-        dispatch(action)
+        if (!books.err) {
+            
+            const action: Action = { type: GET_BOOKS, payload: { books } }
+            dispatch(action)
+        }else{
+            console.log(books);
+            
+        }
     }
 
     const handleSearchBook = async function (key: string) {
@@ -69,9 +75,7 @@ const Dispatcher = function (dispatch: (dispatcher: Action) => void) {
             if (localStorage.user) {
                 const {id} = JSON.parse(localStorage.user)
                 if (id) {
-                    console.log(id);  
                     const user = await apiManager.authUser(id)
-                    console.log(user);
                     const action: Action = {
                         type: LOGIN,
                         payload: { user }
@@ -82,6 +86,22 @@ const Dispatcher = function (dispatch: (dispatcher: Action) => void) {
             } else return false
         } catch (error) {
          return false   
+        }
+    }
+    const addToBookShelf = async function (bookISBN:string) {
+        try {
+            await apiManager.addBookToShelf(bookISBN)
+            await autoLogin()
+        } catch (error) {
+            alert("Book wasn't added")
+        }
+    }
+    const removeFromBookShelf = async function (bookISBN:string) {
+        try {
+            await apiManager.removeFromBookShelf(bookISBN)
+            await autoLogin()
+        } catch (error) {
+            alert("Book wasn't added")
         }
     }
 
@@ -119,7 +139,9 @@ const Dispatcher = function (dispatch: (dispatcher: Action) => void) {
         autoLogin,
         signOut,
         signUpInputHandler,
-        signUpHandler
+        signUpHandler,
+        addToBookShelf,
+        removeFromBookShelf
     }
 }
 

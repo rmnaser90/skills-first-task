@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import Dispatcher from '../../../StoreManager/dispatcher'
 import { State } from '../../../Types/Types'
 import Avatar from '../../Components/Avatar/Avatar'
@@ -22,7 +23,9 @@ const ProfileCard: React.FC = () => {
                     <div data-testid="actionsContainer" className="actionsContainer">
                         <div className="btn">My Account</div>
                         <div className="btn" onClick={signOut}>
+                           <Link to='/'>
                             LogOut
+                           </Link>
                         </div>
                     </div>
                 )}

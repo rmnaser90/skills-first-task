@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ErrorMessage, Form, Formik } from 'formik'
 import ButtonP from '../../Components/ButtonP/ButtonP'
@@ -17,11 +17,15 @@ import { validate } from './ValidationSchema'
 const SignUp: React.FC = () => {
     const navigate = useNavigate()
     const { isLoogedIn, forms } = useSelector((state: State) => state)
+    const [isLoading, setIsLoading] = useState<boolean>(false)
     const { signUp } = forms
     const { signUpHandler } = Dispatcher(useDispatch())
 
-    const onSubmit = (values = signUp) => {
-        signUpHandler(values)
+    const onSubmit = async (values = signUp) => {
+        if (isLoading) return
+        setIsLoading(true)
+        await signUpHandler(values)
+        setIsLoading(false)
     }
     const navigateToSignIn = () => navigate('../signin')
     useEffect(() => {
@@ -33,6 +37,7 @@ const SignUp: React.FC = () => {
     return (
         <SignUpStyled>
             <SignUpHeader />
+            {isLoading && <div className="loadingLayer" />}
             <div className="signUpForm">
                 <div className="formHeader">
                     <Title>Signup</Title>
