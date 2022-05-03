@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import Dispatcher from '../../../StoreManager/dispatcher'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 type Props = {
     item: Book
@@ -17,17 +18,20 @@ type Props = {
 
 const BookContainer: React.FC<Props> = ({ item, width, height, onClick, className, showAddBtn }) => {
     const { title, img } = item
-    const { addToBookShelf, removeFromBookShelf } = Dispatcher(useDispatch())
+    const navigate = useNavigate()
+    const { addToBookShelf, removeFromBookShelf, selectBook } = Dispatcher(useDispatch())
     const { user } = useSelector((state: State) => state)
     const isFavorite = function (book: Book, user: User) {
         return user.books?.map((b) => b.isbn10).includes(book.isbn10)
     }
+    const handleBookSelection =function () {
+        selectBook(item)
+        navigate('/book')
+    }
 
     const addBookHandler = async () => {
-        console.log("trying to add");
         
         if (item.isbn10) {
-            console.log("isbn available: "+item.isbn10);
             await addToBookShelf(item.isbn10.toString())
         }
     }
@@ -39,7 +43,7 @@ const BookContainer: React.FC<Props> = ({ item, width, height, onClick, classNam
     return (
         <BookStyled role={'grid'} width={width} height={height} onClick={onClick} className={className}>
             <div role={'gridcell'} className="img">
-                {img && <img src={img} />}
+                {img && <img src={img}  onClick={handleBookSelection}/>}
                 <div className="btnContainer">
                     {showAddBtn &&
                         (isFavorite(item, user) ? (

@@ -30,6 +30,7 @@ export interface State {
     isLoogedIn: boolean
     books: Book[]
     searchBooks: Book[]
+    selectedBook:Book
     forms: {
         login: {
             email?: string
@@ -46,6 +47,7 @@ export interface Payload {
     isLoogedIn?: boolean
     books?: Book[]
     searchBooks?: Book[]
+    selectedBook?: Book
     inputHandler?: {
         form: 'login' | 'signUp'
         property: 'email' | 'password' | 'fullName' | 'confirmPassword'
@@ -53,7 +55,7 @@ export interface Payload {
     }
 }
 export type Action = {
-    type: 'login' | 'logout' | 'getbooks' | 'inputHandler' | 'autoLogin' | 'search'
+    type: 'login' | 'logout' | 'getbooks' | 'inputHandler' | 'autoLogin' | 'search'| 'selectBook'
     payload: Payload
 }
 export type ApiBook = {

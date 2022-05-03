@@ -10,6 +10,7 @@ import SignIn from './UI/Pages/SignIn/SignIn'
 import SignUp from './UI/Pages/SignUp/SignUp'
 import Dispatcher from './StoreManager/dispatcher'
 import ContactUs from './UI/Pages/ContactUs/ContactUs'
+import BookPage from './UI/Pages/BookPage/BookPage'
 
 const App: React.FC = function () {
     const [viewportHeight, setViewportHeight] = useState(window.innerHeight)
@@ -34,6 +35,7 @@ const App: React.FC = function () {
                     <Route path="signin" element={<SignIn />} />
                     <Route path="signup" element={<SignUp />} />
                     <Route path="contactus" element={<ContactUs />} />
+                    <Route path="book" element={<BookPage viewportWidth={viewportWidth} viewportHeight={viewportHeight}  />} />
                     <Route path="function/" element={<FunctionPage viewportHeight={viewportHeight} />} />
                 </Routes>
             </BrowserRouter>

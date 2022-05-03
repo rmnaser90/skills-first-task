@@ -1,13 +1,9 @@
 import { State, Action } from '../Types/Types'
-import { LOGIN, LOGOUT, GET_BOOKS, INPUT_HANDLER, SEARCH_BOOKS } from './actions'
+import { LOGIN, LOGOUT, GET_BOOKS, INPUT_HANDLER, SEARCH_BOOKS, SELECT_BOOK } from './actions'
 import { produce } from 'immer'
 import initialState from './InitialState'
-export const reducer = function (
-    state: State = initialState,
-    action: Action
-) {
+export const reducer = function (state: State = initialState, action: Action) {
     switch (action.type) {
-
         case LOGIN:
             return produce(state, (draftState: State) => {
                 const curUser = action?.payload?.user
@@ -40,6 +36,13 @@ export const reducer = function (
                 const property = action.payload.inputHandler?.property
                 if (form && property) {
                     draftState.forms[form][property] = action.payload.inputHandler?.value
+                }
+            })
+        case SELECT_BOOK:
+            return produce(state, (draftState: State) => {
+                const book = action.payload.selectedBook
+                if (book) {
+                    draftState.selectedBook = book
                 }
             })
 

@@ -6,6 +6,7 @@ const initialState: State = {
         email: '',
         books: []
     },
+    selectedBook:{},
     isLoogedIn: false,
     books: [],
     searchBooks:[],

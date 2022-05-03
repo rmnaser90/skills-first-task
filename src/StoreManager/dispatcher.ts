@@ -1,23 +1,25 @@
 import apiManager from '../APIs/APIManager'
-import { Action, SignUpForm, User } from '../Types/Types'
-import { GET_BOOKS, INPUT_HANDLER, LOGIN, LOGOUT, SEARCH_BOOKS } from './actions'
+import { Action, Book, SignUpForm, User } from '../Types/Types'
+import { GET_BOOKS, INPUT_HANDLER, LOGIN, LOGOUT, SEARCH_BOOKS, SELECT_BOOK } from './actions'
 
 const Dispatcher = function (dispatch: (dispatcher: Action) => void) {
     const getBooks = async function () {
         const books = await apiManager.getBooks({ q: 'rich dad', maxResults: 40 })
         if (!books.err) {
-            
             const action: Action = { type: GET_BOOKS, payload: { books } }
             dispatch(action)
-        }else{
-            console.log(books);
-            
+        } else {
+            return books
         }
     }
 
     const handleSearchBook = async function (key: string) {
         const searchBooks = await apiManager.searchBooks(key)
         const action: Action = { type: SEARCH_BOOKS, payload: { searchBooks } }
+        dispatch(action)
+    }
+    const selectBook = function (selectedBook: Book) {
+        const action: Action = { type: SELECT_BOOK, payload: { selectedBook } }
         dispatch(action)
     }
 
@@ -66,14 +68,14 @@ const Dispatcher = function (dispatch: (dispatcher: Action) => void) {
                 return user
             }
         } catch (error) {
-            console.log(error);
+            return error
         }
     }
 
     const autoLogin = async function () {
         try {
             if (localStorage.user) {
-                const {id} = JSON.parse(localStorage.user)
+                const { id } = JSON.parse(localStorage.user)
                 if (id) {
                     const user = await apiManager.authUser(id)
                     const action: Action = {
@@ -85,10 +87,10 @@ const Dispatcher = function (dispatch: (dispatcher: Action) => void) {
                 }
             } else return false
         } catch (error) {
-         return false   
+            return false
         }
     }
-    const addToBookShelf = async function (bookISBN:string) {
+    const addToBookShelf = async function (bookISBN: string) {
         try {
             await apiManager.addBookToShelf(bookISBN)
             await autoLogin()
@@ -96,7 +98,7 @@ const Dispatcher = function (dispatch: (dispatcher: Action) => void) {
             alert("Book wasn't added")
         }
     }
-    const removeFromBookShelf = async function (bookISBN:string) {
+    const removeFromBookShelf = async function (bookISBN: string) {
         try {
             await apiManager.removeFromBookShelf(bookISBN)
             await autoLogin()
@@ -120,14 +122,13 @@ const Dispatcher = function (dispatch: (dispatcher: Action) => void) {
     const signUpHandler = async function (values: SignUpForm) {
         try {
             const user: User = await apiManager.signUp(values)
-            console.log(user)
             const action: Action = {
                 type: LOGIN,
                 payload: { user }
             }
             dispatch(action)
         } catch (error) {
-            console.log(error)
+            return error
         }
     }
 
@@ -141,7 +142,8 @@ const Dispatcher = function (dispatch: (dispatcher: Action) => void) {
         signUpInputHandler,
         signUpHandler,
         addToBookShelf,
-        removeFromBookShelf
+        removeFromBookShelf,
+        selectBook
     }
 }
 

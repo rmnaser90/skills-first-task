@@ -13,7 +13,6 @@ import { useMediaQuery } from 'react-responsive'
 import BooksCarousel from '../../Features/BooksCarousel/BooksCarousel'
 import getRecomendations from '../../../Utils/getRecomendations/getRecomendations'
 import getRecommendedBooks, { RecomendedBooks } from '../../../Utils/getRecomendedBooks/getRecomendedBooks'
-import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 type Props = {
     viewportHeight: number
@@ -40,7 +39,6 @@ const Homepage: React.FC<Props> = ({ viewportHeight }) => {
         const books = await getRecommendedBooks(tags)
         setIsLoading(false)
         setRecomendedBooks(books)
-        console.log(recommendedBooks)
     }
 
     useEffect(() => {
@@ -52,7 +50,7 @@ const Homepage: React.FC<Props> = ({ viewportHeight }) => {
                 authors: []
             })
         }
-    }, [user.books])
+    },[isLoggedIn])
 
     const isDesktop = useMediaQuery({ minWidth: 768 })
     return (
