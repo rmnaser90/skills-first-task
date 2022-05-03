@@ -11,19 +11,25 @@ const ProfileCardStyled = styled.div<{ shouldDisplay: boolean }>`
     & .mainContainer {
         width: ${({ shouldDisplay }) => (shouldDisplay ? '30vw' : 'auto')};
         height: ${({ shouldDisplay }) => (shouldDisplay ? '40vh' : '100%')};
-        background-color: ${({ shouldDisplay }) => shouldDisplay && colors.primary};
+        background-color: ${({ shouldDisplay }) => shouldDisplay && 'white'};
         position: absolute;
         display: grid;
-        grid-template-rows: ${({ shouldDisplay }) => (shouldDisplay ? '2fr 1fr' : '1fr')};
+        grid-template-rows: ${({ shouldDisplay }) => (shouldDisplay ? '2fr 0.1fr 1fr' : '1fr')};
         align-items: center;
         justify-items: center;
-        top: 0;
+        top: ${({ shouldDisplay }) => shouldDisplay? '20px':0};
         right: 0;
-        border-radius: 20%;
-        transition: 0.4s;
+        border:${({ shouldDisplay }) => (shouldDisplay ? ` 1px solid ${colors.text.secondary}` : '0px solid')};
+        border-radius: 5px;
         cursor: ${({ shouldDisplay }) => (shouldDisplay ? 'default' : 'pointer')};
     }
+    & .mainContainer hr {
+        width: 90%;
+        color: ${colors.text.secondary};
+        background-color:${colors.text.secondary} ;
+    }
     & .detailsContainer {
+        color: ${colors.text.secondary};
         display: grid;
         align-items: center;
         justify-items: center;
@@ -36,7 +42,7 @@ const ProfileCardStyled = styled.div<{ shouldDisplay: boolean }>`
         height: 100%;
         font-weight: 700;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
         align-items: center;
         justify-items: center;
     }
@@ -44,14 +50,15 @@ const ProfileCardStyled = styled.div<{ shouldDisplay: boolean }>`
         color: ${colors.text.secondary};
         cursor: pointer;
     }
-    & .btn a{
+    & .btn a {
         text-decoration: none;
         color: ${colors.text.secondary};
     }
-    
+
     @media only screen and (max-width: 767px) {
         & .mainContainer {
             top: ${({ shouldDisplay }) => (shouldDisplay ? '10' : '0')};
+            right:-10px;
             width: ${({ shouldDisplay }) => (shouldDisplay ? '90vw' : 'auto')};
             height: ${({ shouldDisplay }) => (shouldDisplay ? '50vh' : '100%')};
         }

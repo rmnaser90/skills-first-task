@@ -6,7 +6,7 @@ const HeaderStyled = styled.div`
     height: 72px;
     width: 86.4vw;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     align-items: center;
     padding-right: 7.2vw;
     padding-left: 6.4vw;
@@ -33,6 +33,29 @@ const HeaderStyled = styled.div`
         text-decoration: none;
         color: ${colors.text.secondary};
 
+    }
+    & .actionsContainer{
+        justify-self: flex-end;
+    }
+    & .actionsContainer a{
+       cursor: pointer;
+       text-decoration: none;
+       color: ${colors.text.secondary};
+       transition: 0.4s;
+    }
+    & .actionsContainer a:hover{
+       font-size: 105%;
+    }
+
+    @media only screen and (max-width: 767px) {
+        & .actionsContainer{
+            font-size: 90%;
+            position: relative;
+            right: -15px;
+        }
+        & .actionsContainer a:hover{
+       font-size: 100%;
+    }
     }
 `
 export default HeaderStyled

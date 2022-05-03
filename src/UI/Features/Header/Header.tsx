@@ -13,12 +13,17 @@ const Header: React.FC = () => {
     return (
         <HeaderStyled>
             <div className="logo">
-            <Link className='logoText' to={'/'}>
-
-                Netboox
-            </Link>
+                <Link className="logoText" to={'/'}>
+                    Netboox
+                </Link>
+            </div>
+            {isLoogedIn ? (
+                <ProfileCard />
+            ) : (
+                <div className="actionsContainer">
+                    <Link to='/signin'>Sign In </Link> / <Link to={'/signup'}>Register</Link> / <Link to={'/contactus'}>Contact Us</Link>
                 </div>
-            {isLoogedIn ? <ProfileCard /> : <FontAwesomeIcon icon={faBars} className="menuIcon" />}
+            )}
         </HeaderStyled>
     )
 }

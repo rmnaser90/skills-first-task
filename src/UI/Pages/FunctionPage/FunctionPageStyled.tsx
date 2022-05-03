@@ -17,9 +17,19 @@ const HomePageStyled = styled.div<Props>`
         margin-right: 6.4vw;
         margin-top: 10px;
         margin-bottom: 10px;
+        position: relative;
     }
     & .inputContainer input {
         text-align: center;
+    }
+    & .searchIcon{
+        position: absolute;
+        height: 50%;
+        color: grey;
+        opacity: 0.8;
+        right: 10px;
+        top: 9px;
+        cursor: pointer;
     }
 
     & .actionsContainer {

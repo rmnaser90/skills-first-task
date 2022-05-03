@@ -6,7 +6,7 @@ type Props = {
 }
 const HeaderSectionStyled = styled.div<Props>`
     background-color: ${colors.default};
-    height: 248px;
+    height: 200px;
     width: 87.2vw;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.09);
     padding-left: 6.4vw;

@@ -19,13 +19,15 @@ const ProfileCard: React.FC = () => {
                     <Avatar name={user.fullName || ''} diameter={shouldDisplay ? '120px' : '50px'} />
                     {shouldDisplay && <h2>{user.fullName}</h2>}
                 </div>
+                {shouldDisplay && <hr />}
                 {shouldDisplay && (
                     <div data-testid="actionsContainer" className="actionsContainer">
                         <div className="btn">My Account</div>
                         <div className="btn" onClick={signOut}>
-                           <Link to='/'>
-                            LogOut
-                           </Link>
+                            <Link to="/">LogOut</Link>
+                        </div>
+                        <div className="btn">
+                            <Link to="/contactus">Contact Us</Link>
                         </div>
                     </div>
                 )}

@@ -12,6 +12,8 @@ import Dispatcher from '../../../StoreManager/dispatcher'
 import { useNavigate } from 'react-router-dom'
 import BookContainer from '../../Components/Book/BookContainer'
 import CardSkeleton from '../../Components/CardSkeleton/CardSkeleton'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 type Props = {
     viewportHeight: number
 }
@@ -30,11 +32,18 @@ const FunctionPage: React.FC<Props> = ({ viewportHeight }) => {
         setSearchValue(value)
     }
     const handleKeySubmit: React.KeyboardEventHandler<HTMLInputElement> = async function ({ key }) {
-        if (key == 'Enter'&& !isLoading) {
+        if (!searchValue) return
+        if (key == 'Enter' && !isLoading) {
             setIsLoading(true)
             await handleSearchBook(searchValue)
             setIsLoading(false)
         }
+    }
+    const handleSearchClick = async function () {
+        if (isLoading || !searchValue) return
+        setIsLoading(true)
+        await handleSearchBook(searchValue)
+        setIsLoading(false)
     }
 
     return (
@@ -50,6 +59,7 @@ const FunctionPage: React.FC<Props> = ({ viewportHeight }) => {
                             name="search"
                             placeholder="Search by Author, Genre, year, title"
                         />
+                        <FontAwesomeIcon className="searchIcon" icon={faSearch} onClick={handleSearchClick} />
                     </InputStyled>
                 </div>
                 <Title>All Results ({items.length})</Title>

@@ -56,6 +56,8 @@ const Dispatcher = function (dispatch: (dispatcher: Action) => void) {
     const login = async function (signInForm: { email?: string; password?: string }) {
         try {
             const user = await apiManager.signInUser(signInForm)
+            console.log(user);
+            
             if (!user.err) {
                 const action: Action = {
                     type: LOGIN,
@@ -64,7 +66,6 @@ const Dispatcher = function (dispatch: (dispatcher: Action) => void) {
                 dispatch(action)
                 return user
             } else {
-                alert(user.msg)
                 return user
             }
         } catch (error) {

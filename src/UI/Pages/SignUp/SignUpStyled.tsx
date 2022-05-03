@@ -66,9 +66,11 @@ const SignUpStyled = styled.div`
     
     & .loadingLayer{
         position: fixed;
+        display: grid;
+        align-items: center;
+        justify-items: center;
         z-index: 999;
-        background-color: ${colors.default};
-        opacity: 0.5;
+        background-color: rgba(255,255,255,0.3);
         width: 100vw;
         height: 100vh;
     }

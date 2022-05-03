@@ -34,6 +34,9 @@ const Homepage: React.FC<Props> = ({ viewportHeight }) => {
     }
 
     const handleGetRecommendedBooks = async function () {
+        if (isLoading) return
+        console.log("called");
+        
         setIsLoading(true)
         const tags = getRecomendations(user)
         const books = await getRecommendedBooks(tags)
@@ -50,7 +53,7 @@ const Homepage: React.FC<Props> = ({ viewportHeight }) => {
                 authors: []
             })
         }
-    },[isLoggedIn])
+    }, [isLoggedIn])
 
     const isDesktop = useMediaQuery({ minWidth: 768 })
     return (
@@ -66,7 +69,7 @@ const Homepage: React.FC<Props> = ({ viewportHeight }) => {
                             {isLoggedIn ? 'Welcome back ' + fullName : 'All your books in one place '}
                         </Title>
                         <div className="actionContainer">
-                            <ButtonP onClick={getStarted}>Get started</ButtonP>
+                            <ButtonP onClick={getStarted}>{isLoggedIn? 'Let\'s explore books':'Get started'}</ButtonP>
                         </div>
                     </div>
                     <div className="imgContainer">
@@ -77,7 +80,7 @@ const Homepage: React.FC<Props> = ({ viewportHeight }) => {
                     showAddBtn={isLoggedIn}
                     className="inspirationContainer"
                     books={books}
-                    title="This week inspiration"
+                    title="This week's inspiration"
                 />
                 {isLoggedIn && (
                     <>
@@ -90,7 +93,7 @@ const Homepage: React.FC<Props> = ({ viewportHeight }) => {
                         <div className="recomendationSection">
                             <Title className="recommendedTitle">Recommended for you</Title>
                             <hr />
-                            {isLoading && <BooksCarousel title=' ' className="inspirationContainer" />}
+                            {isLoading && <BooksCarousel title=" " className="inspirationContainer" />}
                         </div>
                         {recommendedBooks.authors.map(
                             (auther, i) =>

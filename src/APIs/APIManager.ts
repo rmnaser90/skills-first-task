@@ -21,13 +21,12 @@ class APIManager {
             const res = await axios('/search', { ...this.config, params })
             return res.data
         } catch (error) {
-            console.log(error)
+            return error
         }
     }
 
     async searchBooks(key: string) {
         try {
-            
             const params: Params = {
                 q: key,
                 maxResults: 40
@@ -41,18 +40,21 @@ class APIManager {
 
     async signInUser(signInForm: { email?: string; password?: string }) {
         try {
-            const response:AxiosResponse = await axios('user/signIn', { ...this.config, method: 'PUT', data: signInForm })
-                    const {data}= response
-                    console.log(response);
-                    
+            const response: AxiosResponse = await axios('user/signIn', {
+                ...this.config,
+                method: 'PUT',
+                data: signInForm
+            })
+            const { data } = response
+
             const { user, err } = data
             if (user && !err) {
                 this.config.headers.userid = user.id
                 return user
             }
-            alert(data.msg)
+            return data
         } catch (error) {
-            console.log(error)
+            return error
         }
     }
 
@@ -60,9 +62,8 @@ class APIManager {
         try {
             const { data } = await axios('user/signOut', { ...this.config, method: 'PUT' })
             this.config.headers.userid = ''
-            console.log(data)
         } catch (error) {
-            console.log(error)
+            return error
         }
     }
 
@@ -87,38 +88,37 @@ class APIManager {
                 return user
             }
         } catch (error) {
-            console.log(error)
+            return error
         }
     }
 
     async contactUs(message: ContactUsForm) {
         try {
-            const res = await axios({ ...this.config,url:'customerSupport/contactUs', method: 'POST', data: message })
+            const res = await axios({ ...this.config, url: 'customerSupport/contactUs', method: 'POST', data: message })
             return res.data
         } catch (error) {
-            alert("something went wrong")
+            alert('something went wrong')
         }
     }
-    async addBookToShelf(bookISBN:string){
-        console.log("trying to add from api manager");
-        
+    async addBookToShelf(bookISBN: string) {
         try {
-            console.log(
-                this.config.headers.userid
-            );
-            
-            const res = await axios({ ...this.config,url:'shelf/addToShelf/', method: 'POST', data: {bookISBN} })
+            const res = await axios({ ...this.config, url: 'shelf/addToShelf/', method: 'POST', data: { bookISBN } })
             return res.data
         } catch (error) {
-            alert("something went wrong")
+            alert('something went wrong')
         }
     }
-    async removeFromBookShelf(bookISBN:string){
+    async removeFromBookShelf(bookISBN: string) {
         try {
-            const res = await axios({ ...this.config,url:'shelf/deleteUserBook/', method: 'DELETE', data: {bookISBN} })
+            const res = await axios({
+                ...this.config,
+                url: 'shelf/deleteUserBook/',
+                method: 'DELETE',
+                data: { bookISBN }
+            })
             return res.data
         } catch (error) {
-            alert("something went wrong")
+            alert('something went wrong')
         }
     }
 }

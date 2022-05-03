@@ -13,7 +13,7 @@ const BookPageStyled = styled.div<Props>`
     & .header {
         width: 90%;
         height: 80%;
-        padding-top: 7%;
+        padding-top: 3%;
         display: grid;
         grid-template-columns: 1.5fr 1fr;
         align-items: center;
@@ -23,6 +23,7 @@ const BookPageStyled = styled.div<Props>`
         width: 100%;
         height: 100%;
         display: grid;
+        grid-template-rows: 1fr 1.5fr 6fr;
         align-items: flex-start;
     }
     & .subtitle {
@@ -33,8 +34,12 @@ const BookPageStyled = styled.div<Props>`
         margin-top: 5px;
         color: ${colors.text.secondary};
     }
+    & .infoContainer{
+        align-self: center;
+    }
     & .details {
         width: 90%;
+        margin-top: 10px;
         color: ${colors.text.secondary};
         font-size: 100%;
     }

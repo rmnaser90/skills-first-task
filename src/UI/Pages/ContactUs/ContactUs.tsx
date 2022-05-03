@@ -11,6 +11,8 @@ import SignUpStyled from './ContactUsStyled'
 import { ContactUsForm } from '../../../Types/Types'
 import { validate } from './ValidationSchema'
 import apiManager from '../../../APIs/APIManager'
+import LoadingSpin from 'react-loading-spin'
+
 const ContactUs: React.FC = () => {
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -30,7 +32,11 @@ const ContactUs: React.FC = () => {
 
     return (
         <SignUpStyled>
-            {isLoading && <div className="loadingLayer" />}
+          {isLoading && (
+                <div className="loadingLayer">
+                    <LoadingSpin />
+                </div>
+            )}
             <SignUpHeader />
             <div className="contactUsForm">
                 <div className="formHeader">

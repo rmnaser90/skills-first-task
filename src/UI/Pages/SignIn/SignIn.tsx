@@ -26,10 +26,13 @@ const SignIn: React.FC = () => {
         setIsLoading(true)
         const res = await login(values)
         setIsLoading(false)
+        
         if (!res.err) {
             loginInputHandler('email', '')
             loginInputHandler('password', '')
             navigate('/')
+        }else{
+            alert(res.msg)
         }
     }
     const navigateToSinUp = () => navigate('../signup')

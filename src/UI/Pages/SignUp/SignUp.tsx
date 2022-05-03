@@ -13,6 +13,7 @@ import { State } from '../../../Types/Types'
 import { useDispatch, useSelector } from 'react-redux'
 import Dispatcher from '../../../StoreManager/dispatcher'
 import { validate } from './ValidationSchema'
+import LoadingSpin from 'react-loading-spin'
 
 const SignUp: React.FC = () => {
     const navigate = useNavigate()
@@ -36,8 +37,12 @@ const SignUp: React.FC = () => {
 
     return (
         <SignUpStyled>
+            {isLoading && (
+                <div className="loadingLayer">
+                    <LoadingSpin />
+                </div>
+            )}
             <SignUpHeader />
-            {isLoading && <div className="loadingLayer" />}
             <div className="signUpForm">
                 <div className="formHeader">
                     <Title>Signup</Title>

@@ -16,7 +16,6 @@ const HeaderSection: React.FC = () => {
                 </Paragraph>
             </div>
             <div className="actionContainer">
-            <ButtonP>Add new item</ButtonP>
 
             </div>
         </HeaderStyled>

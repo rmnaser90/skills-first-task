@@ -21,7 +21,7 @@ const HomePageStyled = styled.div<Props>`
         width: 100%;
         margin-top: 32px;
         display: grid;
-        grid-template-columns: 1fr 1.01fr;
+        grid-template-columns: 1fr 0.5fr;
     }
     & .imgContainer {
         padding-left: 20px;
@@ -103,6 +103,9 @@ const HomePageStyled = styled.div<Props>`
         }
         & .actionContainer {
             align-self: flex-start;
+        grid-template-columns: 1fr 1fr;
+        min-width: 450px;
+
         }
         & .imgContainer {
             display: grid;

@@ -22,7 +22,7 @@ const getRecommendedBooks = async function (tags: Tags) {
         for (const category in tags.categories) {
             try {
                 const categoryBook: CategoryBooks = {
-                    title: category + '-' + tags.categories[category],
+                    title: category,
                     rank: tags.categories[category],
                     books: []
                 }
@@ -32,10 +32,10 @@ const getRecommendedBooks = async function (tags: Tags) {
                     categoryBook.books = booksRes
                     books.categories.push(categoryBook)
                 } else {
-                    console.log(booksRes)
+                    return booksRes
                 }
             } catch (error) {
-                console.log(error)
+                return error
             }
         }
     }
@@ -43,11 +43,10 @@ const getRecommendedBooks = async function (tags: Tags) {
         for (const author in tags.authors) {
             try {
                 const authorBook: CategoryBooks = {
-                    title: 'More books from ' + author + ' - ' + tags.authors[author],
+                    title: 'More books from ' + author,
                     rank: tags.authors[author],
                     books: []
                 }
-                const query: BookQuery = { keyword: '', inauthor: author }
                 const stringQuery = 'inauthor:' + author
                 const booksRes = await apiManager.searchBooks(stringQuery)
                 if (!booksRes.err) {
@@ -55,7 +54,7 @@ const getRecommendedBooks = async function (tags: Tags) {
                     books.categories.push(authorBook)
                 }
             } catch (error) {
-                console.log(error)
+                return error
             }
         }
     }

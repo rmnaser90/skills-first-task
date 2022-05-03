@@ -40,19 +40,21 @@ const BookPage: React.FC<Props> = ({ viewportHeight }) => {
             <div className="header">
                 <div className="detailsContainer">
                     <div className="titlesContainer">
-                    <Title >{title}</Title>
-                    <p className='subtitle'>{subtitle}</p>
+                        <Title>{title}</Title>
+                        <p className="subtitle">{subtitle}</p>
                     </div>
-                    <div className="details">
-                        <span>Auther: </span>
-                        {author}
-                    </div>
-                    <div className="details">
-                        <span>Published date: </span>
-                        {publishedDate}
-                    </div>
-                    <div className="details">
-                        <span>Category: </span> {category}
+                    <div className="infoContainer">
+                        <div className="details">
+                            <span>Auther: </span>
+                            {author}
+                        </div>
+                        <div className="details">
+                            <span>Published date: </span>
+                            {publishedDate}
+                        </div>
+                        <div className="details">
+                            <span>Category: </span> {category}
+                        </div>
                     </div>
                     <div className="details description">
                         <span>Description: </span>
