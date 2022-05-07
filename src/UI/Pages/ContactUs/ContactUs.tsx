@@ -8,14 +8,17 @@ import Paragraph from '../../Components/Paragraph/Paragraph'
 import Title from '../../Components/Title/Title'
 import SignUpHeader from '../../Features/SignUpHeader/SignUpHeader'
 import SignUpStyled from './ContactUsStyled'
-import { ContactUsForm } from '../../../Types/Types'
+import { ContactUsForm, State } from '../../../Types/Types'
 import { validate } from './ValidationSchema'
 import apiManager from '../../../APIs/APIManager'
 import LoadingSpin from 'react-loading-spin'
-
+import { useSelector } from 'react-redux'
+import colors from '../../Theme/Colors'
 const ContactUs: React.FC = () => {
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState<boolean>(false)
+    const { isLoogedIn: isLoggedIn, user } = useSelector((state: State) => state)
+
     const onSubmit = async (values: ContactUsForm) => {
         if (isLoading) return
         setIsLoading(true)
@@ -23,18 +26,25 @@ const ContactUs: React.FC = () => {
         setIsLoading(false)
         navigate('/')
     }
-    const initialValues: ContactUsForm = {
-        fullName: '',
-        email: '',
-        message: '',
-        q: ''
-    }
+    const initialValues: ContactUsForm = isLoggedIn
+        ? {
+              fullName: user.fullName,
+              email: user.email,
+              message: '',
+              q: ''
+          }
+        : {
+              fullName: '',
+              email: '',
+              message: '',
+              q: ''
+          }
 
     return (
         <SignUpStyled>
-          {isLoading && (
+            {isLoading && (
                 <div className="loadingLayer">
-                    <LoadingSpin />
+                    <LoadingSpin primaryColor={colors.primary} />
                 </div>
             )}
             <SignUpHeader />

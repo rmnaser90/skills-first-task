@@ -14,7 +14,7 @@ type Props = {
 const BookPage: React.FC<Props> = ({ viewportHeight }) => {
     const navigate = useNavigate()
     const { addToBookShelf, removeFromBookShelf } = Dispatcher(useDispatch())
-    const { selectedBook, user } = useSelector((state: State) => state)
+    const { selectedBook, user,isLoogedIn } = useSelector((state: State) => state)
     const { img, author, title, text, publishedDate, previewLink, category, isbn10, subtitle } = selectedBook
     const isFavorite = function (book: Book, user: User) {
         return user.books?.map((b) => b.isbn10).includes(book.isbn10)
@@ -69,11 +69,11 @@ const BookPage: React.FC<Props> = ({ viewportHeight }) => {
                                 Preview
                             </a>
                         </ButtonP>
-                        {isFavorite(selectedBook, user) ? (
+                        {isLoogedIn &&( isFavorite(selectedBook, user) ? (
                             <ButtonP onClick={handleremoveFromBookShelf}>Remove from book shelf</ButtonP>
                         ) : (
                             <ButtonP onClick={handleAddToBookShelf}>Add to book shelf</ButtonP>
-                        )}
+                        ))}
                     </div>
                 </div>
             </div>

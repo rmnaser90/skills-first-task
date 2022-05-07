@@ -14,6 +14,7 @@ import BooksCarousel from '../../Features/BooksCarousel/BooksCarousel'
 import getRecomendations from '../../../Utils/getRecomendations/getRecomendations'
 import getRecommendedBooks, { RecomendedBooks } from '../../../Utils/getRecomendedBooks/getRecomendedBooks'
 import 'react-loading-skeleton/dist/skeleton.css'
+import booksImg from '../../../assets/openBook.png'
 type Props = {
     viewportHeight: number
     viewportWidth: number
@@ -35,8 +36,6 @@ const Homepage: React.FC<Props> = ({ viewportHeight }) => {
 
     const handleGetRecommendedBooks = async function () {
         if (isLoading) return
-        console.log('called')
-
         setIsLoading(true)
         const tags = getRecomendations(user)
         const books = await getRecommendedBooks(tags)
@@ -73,7 +72,7 @@ const Homepage: React.FC<Props> = ({ viewportHeight }) => {
                         </div>
                     </div>
                     <div className="imgContainer">
-                        <CircleFrame width={isDesktop ? '474px' : '256px'} height={isDesktop ? '474px' : '256px'} />
+                        <CircleFrame img={booksImg} width={isDesktop ? '474px' : '256px'} height={isDesktop ? '474px' : '256px'} />
                     </div>
                 </div>
                 <BooksCarousel

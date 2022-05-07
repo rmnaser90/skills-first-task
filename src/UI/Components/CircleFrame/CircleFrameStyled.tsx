@@ -13,5 +13,9 @@ const CircleFrameStyled = styled.div<Props>`
     display: grid;
     align-items: center;
     justify-items: center;
+    overflow: hidden;
+    & img{
+        opacity: 0.6;
+    }
 `
 export default CircleFrameStyled

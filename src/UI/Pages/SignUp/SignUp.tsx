@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Dispatcher from '../../../StoreManager/dispatcher'
 import { validate } from './ValidationSchema'
 import LoadingSpin from 'react-loading-spin'
-
+import colors from '../../Theme/Colors'
 const SignUp: React.FC = () => {
     const navigate = useNavigate()
     const { isLoogedIn, forms } = useSelector((state: State) => state)
@@ -39,7 +39,7 @@ const SignUp: React.FC = () => {
         <SignUpStyled>
             {isLoading && (
                 <div className="loadingLayer">
-                    <LoadingSpin />
+                    <LoadingSpin primaryColor={colors.primary}/>
                 </div>
             )}
             <SignUpHeader />

@@ -13,7 +13,7 @@ import Dispatcher from '../../../StoreManager/dispatcher'
 import { Form, Formik } from 'formik'
 import { validate } from './ValidationSchema'
 import LoadingSpin from "react-loading-spin";
-
+import colors from '../../Theme/Colors'
 const SignIn: React.FC = () => {
     const navigate = useNavigate()
     const { loginInputHandler, login } = Dispatcher(useDispatch())
@@ -46,7 +46,8 @@ const SignIn: React.FC = () => {
     return (
         <SignUpStyled>
                 {isLoading && <div className="loadingLayer" >
-                <LoadingSpin />
+                <LoadingSpin primaryColor={colors.primary}/>
+
                     </div>}
             <SignUpHeader />
             <div className="signUpForm">
