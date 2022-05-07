@@ -20,13 +20,13 @@ type Props = {
 const FunctionPage: React.FC<Props> = ({ viewportHeight }) => {
     const [selectedFilter, setSelectedFilter] = useState<string>('Filter')
     const [isLoading, setIsLoading] = useState<boolean>(false)
-    const [searchValue, setSearchValue] = useState<string>('')
     const searchBooks = useSelector((state: State) => state.searchBooks)
     const books = useSelector((state: State) => state.books)
     const items = searchBooks.length == 0 ? books : searchBooks
     const { handleSearchBook } = Dispatcher(useDispatch())
     const { isLoogedIn } = useSelector((state: State) => state)
     const filters = ['Filter', 'Date', 'Type', 'Auther', 'Category']
+    const [searchValue, setSearchValue] = useState<string>('')
     const handleChange: React.ChangeEventHandler<HTMLInputElement> = function ({ target }) {
         const { value } = target
         setSearchValue(value)

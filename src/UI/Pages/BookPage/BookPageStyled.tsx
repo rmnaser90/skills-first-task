@@ -5,14 +5,13 @@ type Props = {
 }
 const BookPageStyled = styled.div<Props>`
     width: 100%;
-    height: ${({ viewportHeight }) => viewportHeight - 72 + 'px'};
-    overflow-y: scroll;
     display: grid;
     align-items: flex-start;
     justify-items: center;
     & .header {
         width: 90%;
-        height: 80%;
+        height: 80vh;
+        min-height: 60vh;
         padding-top: 3%;
         display: grid;
         grid-template-columns: 1.5fr 1fr;
@@ -25,6 +24,9 @@ const BookPageStyled = styled.div<Props>`
         display: grid;
         grid-template-rows: 1fr 1.5fr 6fr;
         align-items: flex-start;
+        align-self: flex-start;
+        overflow-y: scroll;
+
     }
     & .subtitle {
         font-size: 22px;

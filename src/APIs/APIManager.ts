@@ -108,6 +108,46 @@ class APIManager {
             alert('something went wrong')
         }
     }
+    async addReview(bookISBN: string, text: string) {
+        try {
+            const res = await axios({
+                ...this.config,
+                url: 'shelf/addReview/',
+                method: 'POST',
+                data: { bookISBN, text }
+            })
+            return res.data
+        } catch (error) {
+            alert('something went wrong')
+        }
+    }
+    async removeReview(reviewId:string) {
+        try {
+            const res = await axios({
+                ...this.config,
+                url: 'shelf/removeReview/',
+                method: 'DELETE',
+                data: { reviewId}
+            })
+            return res.data
+        } catch (error) {
+            alert('something went wrong')
+        }
+    }
+    async getReviews(bookISBN: string) {
+        try {
+            const params:Params={bookISBN}
+            const res = await axios({
+                ...this.config,
+                url: 'search/reviews',
+                method: 'GET',
+                params
+            })
+            return res.data
+        } catch (error) {
+            alert('something went wrong')
+        }
+    }
     async removeFromBookShelf(bookISBN: string) {
         try {
             const res = await axios({

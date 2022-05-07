@@ -69,9 +69,10 @@ export type ApiBook = {
 }
 
 export type Params = {
-    q: string
+    q?: string
     maxResults?: number
     startIndex?: number
+    bookISBN?:string
 
 }
 
